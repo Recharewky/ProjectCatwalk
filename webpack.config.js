@@ -1,16 +1,18 @@
-const path = require ('path');
+var path = require('path');
+var SRC_DIR = path.join(__dirname, '/client/src');
+var DIST_DIR = path.join(__dirname, '/client/public');
 
 module.exports = {
-  entry: './client/src/index.js',
+  entry: `${SRC_DIR}/index.js`,
   output: {
-    path: path.resolve(__dirname, 'client', 'public'),
+    path: DIST_DIR,
     filename: 'bundle.js'
   },
   module: {
     rules: [
       {
-        test: '/\.m?(js|jsx)$/',
-        exclude: '/node_modules/',
+        test: /\.m?(js|jsx)$/,
+        exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {

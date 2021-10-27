@@ -1,0 +1,41 @@
+{
+  "name": "project-catwalk",
+  "version": "1.0.0",
+  "description": "just starting the set-up - need to add workflows",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack --mode development --watch",
+    "react-dev": "webpack --config ./webpack.config.js --mode development -w",
+    "build": "./node_modules/.bin/babel client --out-dir public --presets @babel/preset-react --source-maps inline --watch",
+    "server": "npx nodemon server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Recharewky/ProjectCatwalk.git"
+  },
+  "keywords": [],
+  "author": "Recharewkey - a hack reactor team",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Recharewky/ProjectCatwalk.git/issues"
+  },
+  "homepage": "https://github.com/Recharewky/ProjectCatwalk.git#readme",
+  "dependencies": {
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.14.8",
+    "@babel/preset-env": "^7.14.8",
+    "@babel/preset-react": "^7.14.5",
+    "axios": "^0.21.1",
+    "express": "^4.17.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "styled-components": "^5.3.0",
+    "webpack": "^5.60.0",
+    "nodemon": "^2.0.12",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "webpack-cli": "^4.9.1"
+  }
+}

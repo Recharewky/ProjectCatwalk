@@ -13,15 +13,20 @@ class Overview extends React.Component {
     this.state = {
       info: dummyData.product,
       styles: dummyData.styles,
+      currentStyle: dummyData.styles.results[0],
     };
+
+    this.onStyleChange = this.onStyleChange.bind(this);
   }
 
-  get() {
-    return this;
+  onStyleChange(e, style) {
+    this.setState({
+      currentStyle: style,
+    });
   }
 
   render() {
-    const { info, styles } = this.state;
+    const { info, styles, currentStyle } = this.state;
     return (
       <div>
         ~This is where the overview would go~
@@ -35,7 +40,11 @@ class Overview extends React.Component {
         <ProductInfo info={info} />
         <div>
           Here are the styles you can choose from
-          <StyleOptions styles={styles} />
+          <StyleOptions
+            styles={styles}
+            currentStyle={currentStyle}
+            onStyleChange={this.onStyleChange}
+          />
         </div>
       </div>
     );

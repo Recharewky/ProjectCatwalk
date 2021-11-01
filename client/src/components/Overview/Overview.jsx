@@ -29,14 +29,6 @@ class Overview extends React.Component {
     const { info, styles, currentStyle } = this.state;
     return (
       <div>
-        ~This is where the overview would go~
-        <div>
-          Check out this cool product with id of
-        </div>
-        <div>
-          {info.id}
-        </div>
-        Here is the sample data
         <ProductInfo info={info} />
         <div>
           Here are the styles you can choose from

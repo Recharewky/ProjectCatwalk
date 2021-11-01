@@ -5,19 +5,19 @@ import QA from './QA/QA.jsx';
 import Reviews from './Reviews/Reviews.jsx';
 
 class App extends React.Component {
-
   constructor(props) {
     super(props);
 
     this.state = {
-      id: 48441
-    }
+      id: 48441,
+    };
   }
+
   render() {
     return (
       <div>
         Hello World
-        <Overview id={this.state.id}/>
+        <Overview id={this.state.id} />
         {/* <RelatedProduct/>
         <QA/>
         <Reviews/> */}

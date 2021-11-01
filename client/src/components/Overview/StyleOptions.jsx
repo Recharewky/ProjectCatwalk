@@ -13,6 +13,7 @@ const StyleOptions = ({ styles, currentStyle, onStyleChange }) => {
         {'  >  '}
         {currentStyle.name}
       </legend>
+      {/* Find a way to reflect the current style selected */}
       {options.map((style) => <Style style={style} onStyleChange={onStyleChange} />)}
     </form>
   );

@@ -3,6 +3,7 @@
 import React from 'react';
 // import axios from 'axios';
 import ProductInfo from './ProductInfo.jsx';
+import StyleOptions from './StyleOptions.jsx';
 import dummyData from '../../../../dummyData.js';
 
 class Overview extends React.Component {
@@ -11,6 +12,7 @@ class Overview extends React.Component {
 
     this.state = {
       info: dummyData.product,
+      styles: dummyData.styles,
     };
   }
 
@@ -19,15 +21,22 @@ class Overview extends React.Component {
   }
 
   render() {
-    const { id } = this.props;
-    const { info } = this.state;
+    const { info, styles } = this.state;
     return (
       <div>
-        ~This is where te overview would go~
-        Check out this cool product with id of
-        {id}
+        ~This is where the overview would go~
+        <div>
+          Check out this cool product with id of
+        </div>
+        <div>
+          {info.id}
+        </div>
         Here is the sample data
         <ProductInfo info={info} />
+        <div>
+          Here are the styles you can choose from
+          <StyleOptions styles={styles} />
+        </div>
       </div>
     );
   }

@@ -1,6 +1,7 @@
 import React from 'react';
 import ReviewListItem from './ReviewListItem.jsx';
-import AddReview from './AddReview.jsx';
+import AddReviewModal from './AddReviewModal.jsx';
+
 import axios from 'axios';
 
 class ReviewList extends React.Component {
@@ -11,6 +12,7 @@ class ReviewList extends React.Component {
     }
     this.getReviews = this.getReviews.bind(this);
   }
+
   getReviews(id) {
     console.log('getting reviews with axios')
     axios({
@@ -31,7 +33,7 @@ class ReviewList extends React.Component {
 
   componentDidMount() {
     console.log('component mounted');
-    this.getReviews(61579);
+    this.getReviews(61575);
   }
 
   render() {
@@ -40,10 +42,17 @@ class ReviewList extends React.Component {
         {this.state.reviews.map((review, index) =>
         <ReviewListItem review={review} key={index} />
         )}
-        <AddReview />
+        <div>
+         <button>
+            More Reviews
+          </button>
+          <AddReviewModal />
+        </div>
       </div>
-    )
+
+    );
   }
 }
 
 export default ReviewList;
+

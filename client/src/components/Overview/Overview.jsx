@@ -6,6 +6,7 @@ import ProductInfo from './ProductInfo.jsx';
 import MainImage from './MainImage.jsx';
 import StyleOptions from './StyleOptions.jsx';
 import Description from './Description.jsx';
+import Selection from './Selection.jsx';
 import dummyData from '../../../../dummyData.js';
 
 class Overview extends React.Component {
@@ -41,6 +42,9 @@ class Overview extends React.Component {
             currentStyle={currentStyle}
             onStyleChange={this.onStyleChange}
           />
+        </div>
+        <div>
+          <Selection currentStyle={currentStyle} />
         </div>
         <div>
           <Description info={info} />

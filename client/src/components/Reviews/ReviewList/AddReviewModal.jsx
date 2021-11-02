@@ -9,7 +9,18 @@ function AddReviewModal () {
   return(
     <div>
       <button onClick={() => setmodalIsOpen(true)}> Add A Review +</button>
-      <Modal isOpen={modalIsOpen} onRequestClose={() => setmodalIsOpen(false)}>
+      <Modal
+        isOpen={modalIsOpen}
+        shouldCloseOnOverlayClick={false}
+        onRequestClose={() => setModalIsOpen(false)}
+        style={{
+          overlay: {
+            backgroundColor: 'grey'
+          },
+          content: {
+            color: 'orange'
+          }}
+        }>
       <AddReview />
       <div>
         <button onClick={() => setmodalIsOpen(false)}> Close </button>

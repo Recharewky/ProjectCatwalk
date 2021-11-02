@@ -1,9 +1,6 @@
 import React from 'react';
 
-const heading = {
-  fontSize: '32px',
-  color: 'teal'
-}
+
 
 function Inline() {
   return(

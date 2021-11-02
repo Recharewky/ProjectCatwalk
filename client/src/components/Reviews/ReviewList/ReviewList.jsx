@@ -1,7 +1,6 @@
 import React from 'react';
 import ReviewListItem from './ReviewListItem.jsx';
 import AddReviewModal from './AddReviewModal.jsx';
-import Inline from './Inline.jsx';
 import styled from 'styled-components'
 import axios from 'axios';
 
@@ -65,7 +64,6 @@ class ReviewList extends React.Component {
   render() {
     return (
       <div >
-        <Inline />
         {this.state.display.map((review, index) =>
         <ReviewListItem review={review} key={index} />
         )}

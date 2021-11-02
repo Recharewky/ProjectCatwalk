@@ -18,7 +18,7 @@ class App extends React.Component {
       <div>
 
 
-        <Reviews />
+        <Reviews id={this.state.id}/>
         {/*Hello World <Overview id={this.state.id}/> <RelatedProduct/>
         <QA/>
          */}

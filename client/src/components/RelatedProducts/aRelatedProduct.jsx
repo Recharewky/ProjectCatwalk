@@ -5,6 +5,7 @@
 
 import React from 'react';
 import $ from 'jquery';
+import styled from 'styled-components';
 
 class ARelatedProduct extends React.Component {
   constructor(props) {
@@ -49,7 +50,7 @@ class ARelatedProduct extends React.Component {
             name: success.name,
             price: Number(success.default_price),
             description: success.description,
-            photos: success.photos[0].photos[0].url,
+            photos: success.photos[0].photos[0].thumbnail_url,
             averageRating: average,
             category: success.category,
           },
@@ -62,39 +63,63 @@ class ARelatedProduct extends React.Component {
   render() {
     const { name } = this.state;
     const { price } = this.state;
-    const { description } = this.state;
+    // const { description } = this.state;
     const { averageRating } = this.state;
     const { photos } = this.state;
     const { category } = this.state;
+
+    const Title = styled.div`
+    font-size: 1 em;
+    text-align: center;
+    color: palevioletred;
+  `;
+
+    const Img = styled.img`
+    height: 300px;
+    width: 300px;
+    object-fit: cover;
+  `;
+
+    const Container = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 300px;
+    border: blue 5px;
+    border-style: solid;
+    border-radius: 20px;
+    overflow: hidden;
+  `;
+
     return (
-      <div>
+      <Container>
+        <div className="img">
+          <Img className="image" alt="" src={photos} />
+        </div>
         <div>
           Category:
+          {' '}
           {category}
         </div>
         <div>
           Name:
+          {' '}
           {name}
         </div>
         <div>
           Price:
+          {' '}
           {price}
           {' '}
-          USD
-        </div>
-        <div>
-          Description:
-          {description}
+          CAD
         </div>
         <div>
           Rating:
+          {' '}
           {averageRating}
         </div>
-        <div className="img">
-          Image:
-          <img className="image" alt="" src={photos} />
-        </div>
-      </div>
+      </Container>
     );
   }
 }

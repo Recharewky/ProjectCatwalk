@@ -16,11 +16,12 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        Hello World
-        <Overview id={this.state.id}/>
-        {/* <RelatedProduct/>
+
+
+        <Reviews id={this.state.id}/>
+        {/*Hello World <Overview id={this.state.id}/> <RelatedProduct/>
         <QA/>
-        <Reviews/> */}
+         */}
       </div>
     );
   }

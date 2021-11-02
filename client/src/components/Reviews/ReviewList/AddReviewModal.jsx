@@ -1,6 +1,16 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import AddReview from './AddReview.jsx';
+import styled from 'styled-components';
+
+const Button = styled.button`
+  background: transparent;
+  border-radius: 3px;
+  border: 2px solid palevioletred;
+  color: palevioletred;
+  margin: 0 1em;
+  padding: 0.25em 1em;
+`
 
 Modal.setAppElement('#app');
 function AddReviewModal () {
@@ -8,7 +18,7 @@ function AddReviewModal () {
   const [modalIsOpen, setmodalIsOpen] = useState(false);
   return(
     <div>
-      <button onClick={() => setmodalIsOpen(true)}> Add A Review +</button>
+      <Button onClick={() => setmodalIsOpen(true)}> Add A Review +</Button>
       <Modal
         isOpen={modalIsOpen}
         shouldCloseOnOverlayClick={false}
@@ -23,7 +33,7 @@ function AddReviewModal () {
         }>
       <AddReview />
       <div>
-        <button onClick={() => setmodalIsOpen(false)}> Close </button>
+        <Button onClick={() => setmodalIsOpen(false)}> Close </Button>
       </div>
       </Modal>
     </div>

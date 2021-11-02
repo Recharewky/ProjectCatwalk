@@ -16,10 +16,10 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        Hello World
-        <Overview id={this.state.id}/>
+
+
         <Reviews />
-        {/* <RelatedProduct/>
+        {/*Hello World <Overview id={this.state.id}/> <RelatedProduct/>
         <QA/>
          */}
       </div>

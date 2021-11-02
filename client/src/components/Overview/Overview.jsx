@@ -31,6 +31,7 @@ class Overview extends React.Component {
     const { info, styles, currentStyle } = this.state;
     return (
       <div>
+        <h1>Product Overview</h1>
         <MainImage photos={currentStyle.photos} />
         <ProductInfo info={info} />
         <div>

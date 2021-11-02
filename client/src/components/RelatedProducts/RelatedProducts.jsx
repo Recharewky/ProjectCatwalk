@@ -1,8 +1,13 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable import/extensions */
-import React from 'react';
+import React, { useState } from 'react';
 import $ from 'jquery';
 import RelatedProductList from './RelatedProductList.jsx';
+
+// function RelatedProducts() {
+//   const [allRelatedProducts, setDisplay] = useState([]);
+
+// }
 
 class RelatedProducts extends React.Component {
   constructor(props) {

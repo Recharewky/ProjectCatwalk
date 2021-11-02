@@ -13,7 +13,6 @@ app.post('/relatedProducts/post/:id', (req, res) => {
       console.log('Error in fetching data from API');
       res.sendStatus(400);
     } else {
-      console.log('Heres the success object', success.data);
       res.status(201).send(success.data);
     }
   });
@@ -26,8 +25,7 @@ app.post('/relatedProducts/postAProduct/:id', (req, res) => {
       console.log('Error in fetching data from API');
       res.sendStatus(400);
     } else {
-      console.log('Heres the success object', success.data);
-      res.status(201).send(success.data);
+      res.status(201).send(success);
     }
   });
 });

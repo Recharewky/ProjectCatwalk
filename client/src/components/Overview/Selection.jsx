@@ -40,6 +40,7 @@ const Selection = ({ currentStyle }) => {
         {availableAmt}
       </select>
       <div>
+        {/* need to still add in BRD specs for add to cart button */}
         <button type="button" onClick={() => console.log(`Adding to cart size ${selectedSize} x${selectedAmt}`)}>Add to Cart</button>
       </div>
     </div>

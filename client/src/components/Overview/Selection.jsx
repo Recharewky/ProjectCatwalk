@@ -2,11 +2,12 @@
 import React, { useState } from 'react';
 
 const Selection = ({ currentStyle }) => {
-  // const [selectedSize, setSize] = useState('Select Size');
+  const [selectedSize, setSize] = useState('');
+  const [selectedAmt, setAmt] = useState(0);
   const [amtEnabled, enableAmt] = useState(true);
 
   const amtOptions = [<option value="amt" selected disabled>-</option>];
-  const [availableAmt, setAmt] = useState(amtOptions);
+  const [availableAmt, setAmtList] = useState(amtOptions);
 
   const sizeOptions = [<option value="size" selected disabled>Select Size</option>];
   const stockPerSizes = [];
@@ -20,8 +21,6 @@ const Selection = ({ currentStyle }) => {
     <div>
       <select onChange={(e) => {
         enableAmt(false);
-        console.log(e.target.selectedIndex - 1);
-        console.log(stockPerSizes[e.target.selectedIndex - 1]);
         const amountList = [];
         const choice = e.target.selectedIndex - 1;
         let max = stockPerSizes[choice];
@@ -31,14 +30,18 @@ const Selection = ({ currentStyle }) => {
         for (let j = 1; j <= max; j += 1) {
           amountList.push(<option value={j}>{j}</option>);
         }
-        setAmt(amountList);
+        setSize(e.target.value);
+        setAmtList(amountList);
       }}
       >
         {sizeOptions}
       </select>
-      <select disabled={amtEnabled}>
+      <select disabled={amtEnabled} onChange={(e) => setAmt(e.target.value)}>
         {availableAmt}
       </select>
+      <div>
+        <button type="button" onClick={() => console.log(`Adding to cart size ${selectedSize} x${selectedAmt}`)}>Add to Cart</button>
+      </div>
     </div>
   );
 };

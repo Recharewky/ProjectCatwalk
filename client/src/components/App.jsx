@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import React from 'react';
+import styled from 'styled-components';
 import Overview from './Overview/Overview.jsx';
 import RelatedProduct from './RelatedProducts/RelatedProducts.jsx';
 import QA from './QA/QA.jsx';
@@ -16,14 +17,18 @@ class App extends React.Component {
 
   render() {
     const { id } = this.state;
+    const Container = styled.div`
+      font-family: 'Roboto', sans-serif;
+      font-style: normal;
+    `;
     return (
-      <div>
+      <Container>
         Hello World
         <Overview id={id} />
         <RelatedProduct id={id} />
         {/* <QA/>
         <Reviews/> */}
-      </div>
+      </Container>
     );
   }
 }

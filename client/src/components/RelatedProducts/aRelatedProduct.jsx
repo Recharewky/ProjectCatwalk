@@ -68,10 +68,10 @@ class ARelatedProduct extends React.Component {
     const { photos } = this.state;
     const { category } = this.state;
 
-    const Title = styled.div`
-    font-size: 1 em;
+    const RelatedProductsDetails = styled.div`
+    font-size: 1em;
     text-align: center;
-    color: palevioletred;
+    padding: 0.5em;
   `;
 
     const Img = styled.img`
@@ -86,7 +86,7 @@ class ARelatedProduct extends React.Component {
     align-items: flex-start;
     flex-direction: column;
     width: 300px;
-    border: blue 5px;
+    border: #1c9bef 3px;
     border-style: solid;
     border-radius: 20px;
     overflow: hidden;
@@ -97,28 +97,28 @@ class ARelatedProduct extends React.Component {
         <div className="img">
           <Img className="image" alt="" src={photos} />
         </div>
-        <div>
+        <RelatedProductsDetails>
           Category:
           {' '}
           {category}
-        </div>
-        <div>
+        </RelatedProductsDetails>
+        <RelatedProductsDetails>
           Name:
           {' '}
           {name}
-        </div>
-        <div>
+        </RelatedProductsDetails>
+        <RelatedProductsDetails>
           Price:
           {' '}
           {price}
           {' '}
           CAD
-        </div>
-        <div>
+        </RelatedProductsDetails>
+        <RelatedProductsDetails>
           Rating:
           {' '}
           {averageRating}
-        </div>
+        </RelatedProductsDetails>
       </Container>
     );
   }

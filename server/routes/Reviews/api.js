@@ -61,7 +61,6 @@ const getAProduct = function (productID, callback) {
           })
             .then((response2) => {
               productObj.photos = response2.data.results;
-              console.log(productObj);
               callback(null, productObj);
             });
         })

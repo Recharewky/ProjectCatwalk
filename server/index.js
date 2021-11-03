@@ -19,7 +19,6 @@ app.post('/relatedProducts/post/:id', (req, res) => {
 });
 
 app.post('/relatedProducts/postAProduct/:id', (req, res) => {
-  console.log(req.params);
   api.getAProduct(req.params.id, (err, success) => {
     if (err) {
       console.log('Error in fetching data from API');

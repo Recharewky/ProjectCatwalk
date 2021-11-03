@@ -23,7 +23,12 @@ class RelatedProductList extends React.Component {
       <div>
         <h2>Related Products</h2>
         <Container>
-          {allRelatedProducts.map((aProduct) => <ARelatedProduct aProduct={aProduct} />)}
+          {allRelatedProducts.map((aProduct) => (
+            <ARelatedProduct
+              key={aProduct}
+              aProduct={aProduct}
+            />
+          ))}
         </Container>
       </div>
     );

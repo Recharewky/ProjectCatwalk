@@ -26,8 +26,8 @@ class App extends React.Component {
         Hello World
         <Overview id={id} />
         <RelatedProduct id={id} />
-        {/* <QA/>
-        <Reviews/> */}
+        <Reviews id={id}/>}
+        {/*<QA />*/}
       </Container>
     );
   }

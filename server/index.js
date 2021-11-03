@@ -2,10 +2,13 @@ const express = require('express');
 const axios = require('axios');
 const api = require('./Routes/Reviews/api.js');
 
+
 const app = express();
 const PORT = 3000;
 
 app.use(express.static('client/public'));
+app.use(express.json());
+
 
 app.post('/relatedProducts/post/:id', (req, res) => {
   api.getAllRelatedProducts(req.params.id, (err, success) => {
@@ -34,3 +37,25 @@ app.listen(PORT, () => {
 });
 
 module.export = app;
+=======
+})
+//***********Overview***************//
+
+
+//***********Related***************//
+
+
+//***********QA***************//
+
+
+//***********Reviews***************//
+app.get('/reviews', (req, res) => {
+  console.log('get request from server')
+  api.getReviews(req.query.product_id)
+      .then((data) => {
+          res.status(200).send(data.data);
+      })
+      .catch((err) => {
+          res.status(404).send(err);
+      })
+})

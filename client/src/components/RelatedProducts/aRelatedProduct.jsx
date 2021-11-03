@@ -25,9 +25,8 @@ class ARelatedProduct extends React.Component {
     $.ajax({
       method: 'POST',
       url: `/relatedProducts/postAProduct/${aProduct}`,
-      contentType: 'application/json',
-      data: JSON.stringify(aProduct),
       success: (success) => {
+        console.log(success);
         let average = 0;
         let total = 0;
         let counter = 0;

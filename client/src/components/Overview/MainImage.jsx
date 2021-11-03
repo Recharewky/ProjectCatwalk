@@ -3,11 +3,12 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Main = styled.img`
-  height: 25em;
-  width: 30em;
-  object-fit: cover;
+  height: 420px;
+  width: 500px;
+  object-fit: contain;
   border-radius: 14px;
   border: 5px solid orange;
+  background-color: black;
 }
 `;
 
@@ -26,6 +27,9 @@ const LeftArrow = styled.button`
   width: 3em;
   background-color: green;
   border-radius: 5px;
+  position: relative;
+  top: 190px;
+  right: 490px;
 `;
 
 const RightArrow = styled.button`
@@ -33,6 +37,9 @@ const RightArrow = styled.button`
   width: 3em;
   background-color: green;
   border-radius: 5px;
+  position: relative;
+  top: 190px;
+  right: 100px;
 `;
 
 const Gallery = styled.div`
@@ -40,7 +47,10 @@ const Gallery = styled.div`
   flex-direction: column;
 `;
 
-// const
+const MainContainer = styled.div`
+  display: flex;
+  position: absolute;
+`;
 
 const MainImage = ({ photos }) => {
   const [currentPhoto, setPhoto] = useState(0);
@@ -48,7 +58,7 @@ const MainImage = ({ photos }) => {
   const Thumbnails = photos.map((photo) => <Thumbnail src={photo.thumbnail_url} alt="thumbnail for product" />);
 
   return (
-    <div>
+    <MainContainer url={photos[currentPhoto].url}>
       <Gallery>
         {Thumbnails}
       </Gallery>
@@ -73,7 +83,7 @@ const MainImage = ({ photos }) => {
       >
         {'>'}
       </RightArrow>
-    </div>
+    </MainContainer>
   );
 };
 

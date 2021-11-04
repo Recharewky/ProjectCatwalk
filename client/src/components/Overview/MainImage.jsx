@@ -54,6 +54,8 @@ const MainContainer = styled.div`
 
 const MainImage = ({ photos }) => {
   const [currentPhoto, setPhoto] = useState(0);
+  const [leftArrowVisible, enableLeftArrow] = useState(false);
+  const [rightArrowVisible, enableRightArrow] = useState(true);
 
   let i = 0;
   const Thumbnails = [];
@@ -68,12 +70,6 @@ const MainImage = ({ photos }) => {
       />
     ));
   }
-  // const Thumbnails = photos.map((photo) => (
-  //   <Thumbnail
-  //     src={photo.thumbnail_url}
-  //     onClick={(e) => console.log(e)}
-  //   />
-  // ));
 
   return (
     <MainContainer>
@@ -81,26 +77,44 @@ const MainImage = ({ photos }) => {
         {Thumbnails}
       </Gallery>
       <Main src={photos[currentPhoto].url} alt="hi-res product" />
-      <LeftArrow
-        type="button"
-        onClick={() => {
-          if (currentPhoto > 0) {
-            setPhoto(Number(currentPhoto - 1));
-          }
-        }}
-      >
-        {'<'}
-      </LeftArrow>
-      <RightArrow
-        type="button"
-        onClick={() => {
-          if (currentPhoto < photos.length - 1) {
-            setPhoto(Number(currentPhoto + 1));
-          }
-        }}
-      >
-        {'>'}
-      </RightArrow>
+      {leftArrowVisible
+        && (
+        <LeftArrow
+          type="button"
+          onClick={() => {
+            if (currentPhoto > 0) {
+              setPhoto(Number(currentPhoto - 1));
+              if (!rightArrowVisible) {
+                enableRightArrow(true);
+              }
+            }
+            if (currentPhoto === 1) {
+              enableLeftArrow(false);
+            }
+          }}
+        >
+          {'<'}
+        </LeftArrow>
+        )}
+      {rightArrowVisible
+        && (
+        <RightArrow
+          type="button"
+          onClick={() => {
+            if (currentPhoto < photos.length - 1) {
+              setPhoto(Number(currentPhoto + 1));
+              if (!leftArrowVisible) {
+                enableLeftArrow(true);
+              }
+            }
+            if (currentPhoto === photos.length - 2) {
+              enableRightArrow(false);
+            }
+          }}
+        >
+          {'>'}
+        </RightArrow>
+        )}
     </MainContainer>
   );
 };

@@ -49,7 +49,7 @@ const Gallery = styled.div`
 
 const MainContainer = styled.div`
   display: flex;
-  position: absolute;
+  position: relative;
 `;
 
 const MainImage = ({ photos }) => {

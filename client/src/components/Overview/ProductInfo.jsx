@@ -1,8 +1,13 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import styled from 'styled-components';
+
+const Info = styled.div`
+  flex-basis: 30%;
+`;
 
 const ProductInfo = ({ info }) => (
-  <div>
+  <Info>
     <div>
       {info.category}
     </div>
@@ -16,7 +21,7 @@ const ProductInfo = ({ info }) => (
       $
       {` ${info.default_price}`}
     </div>
-  </div>
+  </Info>
 
 );
 

@@ -55,10 +55,28 @@ const MainContainer = styled.div`
 const MainImage = ({ photos }) => {
   const [currentPhoto, setPhoto] = useState(0);
 
-  const Thumbnails = photos.map((photo) => <Thumbnail src={photo.thumbnail_url} alt="thumbnail for product" />);
+  let i = 0;
+  const Thumbnails = [];
+  for (i = 0; i < photos.length; i += 1) {
+    Thumbnails.push((
+      <Thumbnail
+        src={photos[i].thumbnail_url}
+        data-id={i}
+        onClick={(e) => {
+          setPhoto(Number(e.target.dataset.id));
+        }}
+      />
+    ));
+  }
+  // const Thumbnails = photos.map((photo) => (
+  //   <Thumbnail
+  //     src={photo.thumbnail_url}
+  //     onClick={(e) => console.log(e)}
+  //   />
+  // ));
 
   return (
-    <MainContainer url={photos[currentPhoto].url}>
+    <MainContainer>
       <Gallery>
         {Thumbnails}
       </Gallery>
@@ -67,7 +85,7 @@ const MainImage = ({ photos }) => {
         type="button"
         onClick={() => {
           if (currentPhoto > 0) {
-            setPhoto(currentPhoto - 1);
+            setPhoto(Number(currentPhoto - 1));
           }
         }}
       >
@@ -77,7 +95,7 @@ const MainImage = ({ photos }) => {
         type="button"
         onClick={() => {
           if (currentPhoto < photos.length - 1) {
-            setPhoto(currentPhoto + 1);
+            setPhoto(Number(currentPhoto + 1));
           }
         }}
       >

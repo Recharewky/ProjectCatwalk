@@ -1,6 +1,7 @@
 /* eslint-disable import/extensions */
 /* eslint-disable react/prop-types */
 import React from 'react';
+
 // import axios from 'axios';
 import ProductInfo from './ProductInfo.jsx';
 import MainImage from './MainImage.jsx';
@@ -11,7 +12,6 @@ import dummyData from '../../../../dummyData.js';
 class Overview extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       info: dummyData.product,
       styles: dummyData.styles,
@@ -25,12 +25,14 @@ class Overview extends React.Component {
     this.setState({
       currentStyle: style,
     });
+
   }
 
   render() {
     const { info, styles, currentStyle } = this.state;
     return (
       <div>
+
         <h1>Product Overview</h1>
         <MainImage photos={currentStyle.photos} />
         <ProductInfo info={info} />
@@ -45,6 +47,7 @@ class Overview extends React.Component {
         <div>
           <Description info={info} />
         </div>
+
       </div>
     );
   }

@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Main = styled.img`
@@ -19,7 +19,7 @@ const Thumbnail = styled.img`
   border-radius: 5px;
   border: 3px solid;
   background-color: darkgray;
-  border-color: ${(props) => props.isCurrentPhoto}
+  border-color: ${(props) => props.selectedColor}
 }
 `;
 
@@ -48,7 +48,6 @@ const MainContainer = styled.div`
 
 const MainImage = ({ photos }) => {
   const [currentPhoto, setPhoto] = useState(0);
-  const [prevPhoto, deselectPhoto] = useState(null);
   const [leftArrowVisible, enableLeftArrow] = useState(false);
   const [rightArrowVisible, enableRightArrow] = useState(true);
 
@@ -60,26 +59,24 @@ const MainImage = ({ photos }) => {
         key={i}
         src={photos[i].thumbnail_url}
         data-id={i}
+        selectedColor={i === currentPhoto ? 'red' : ''}
         onClick={(e) => {
-          setPhoto(Number(e.target.dataset.id));
-          deselectPhoto(e.target);
-          if (prevPhoto) {
-            prevPhoto.style.borderColor = '';
+          const id = Number(e.target.dataset.id);
+          setPhoto(Number(id));
+          if (id === 0) {
+            enableLeftArrow(false);
+            enableRightArrow(true);
+          } else if (id === photos.length - 1) {
+            enableLeftArrow(true);
+            enableRightArrow(false);
+          } else {
+            enableLeftArrow(true);
+            enableRightArrow(true);
           }
-          e.target.style.borderColor = 'red';
         }}
       />
     ));
   }
-
-  // Try and add a galleryElement component with state/props that
-  // the Thumbnail styled component is based off
-  // this component can have a state indicating whether it is active
-  // and return? a styled component with a passed in prop as the state?
-
-  useEffect(() => {
-    document.title = `${currentPhoto}`;
-  });
 
   return (
     <MainContainer>
@@ -93,7 +90,6 @@ const MainImage = ({ photos }) => {
           type="button"
           onClick={() => {
             if (currentPhoto > 0) {
-              console.log(Thumbnails[currentPhoto]);
               setPhoto(Number(currentPhoto - 1));
               if (!rightArrowVisible) {
                 enableRightArrow(true);

@@ -39,7 +39,7 @@ const RightArrow = styled.button`
 
 const Gallery = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 `;
 
 const MainContainer = styled.div`

@@ -25,6 +25,8 @@ class ARelatedProduct extends React.Component {
     $.ajax({
       method: 'POST',
       url: `/relatedProducts/postAProduct/${aProduct}`,
+      contentType: 'application/json',
+      data: JSON.stringify({ aProduct }),
       success: (success) => {
         console.log(success);
         let average = 0;
@@ -71,6 +73,7 @@ class ARelatedProduct extends React.Component {
     font-size: 1em;
     text-align: center;
     padding: 0.5em;
+    overflow: hidden;
   `;
 
     const Img = styled.img`
@@ -80,11 +83,15 @@ class ARelatedProduct extends React.Component {
   `;
 
     const Container = styled.div`
-    display: flex;
+    cursor: pointer;
     justify-content: space-between;
     align-items: flex-start;
     flex-direction: column;
     width: 300px;
+    padding: 20px
+  `;
+
+    const InnerContainer = styled.div`
     border: #1c9bef 3px;
     border-style: solid;
     border-radius: 20px;
@@ -93,34 +100,45 @@ class ARelatedProduct extends React.Component {
 
     return (
       <Container>
-        <div className="img">
-          <Img className="image" alt="" src={photos} />
-        </div>
-        <RelatedProductsDetails>
-          Category:
-          {' '}
-          {category}
-        </RelatedProductsDetails>
-        <RelatedProductsDetails>
-          Name:
-          {' '}
-          {name}
-        </RelatedProductsDetails>
-        <RelatedProductsDetails>
-          Price:
-          {' '}
-          {price}
-          {' '}
-          CAD
-        </RelatedProductsDetails>
-        <RelatedProductsDetails>
-          Rating:
-          {' '}
-          {averageRating}
-        </RelatedProductsDetails>
+        <InnerContainer>
+          <div className="img">
+            <Img className="image" alt="" src={photos} />
+          </div>
+          <RelatedProductsDetails>
+            Category:
+            {' '}
+            {category}
+          </RelatedProductsDetails>
+          <RelatedProductsDetails>
+            Name:
+            {' '}
+            {name}
+          </RelatedProductsDetails>
+          <RelatedProductsDetails>
+            Price:
+            {' '}
+            {price}
+            {' '}
+            CAD
+          </RelatedProductsDetails>
+          <RelatedProductsDetails>
+            Rating:
+            {' '}
+            {averageRating}
+          </RelatedProductsDetails>
+        </InnerContainer>
       </Container>
     );
   }
 }
 
 export default ARelatedProduct;
+// display: flex;
+// justify-content: space-between;
+// align-items: flex-start;
+// flex-direction: column;
+// width: 300px;
+// border: #1c9bef 3px;
+// border-style: solid;
+// border-radius: 20px;
+// overflow: hidden;

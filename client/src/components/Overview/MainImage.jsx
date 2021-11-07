@@ -1,13 +1,15 @@
+/* eslint-disable import/extensions */
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import ExpandedView from './ExpandedView.jsx';
 
 const Main = styled.img`
   height: 450px;
   width: 600px;
   object-fit: contain;
   border-radius: 14px;
-  border: 5px solid orange;
+  border: 5px solid cornflowerblue;
   background-color: black;
   cursor: zoom-in;
 }
@@ -66,7 +68,7 @@ const MainImage = ({ photos }) => {
         key={i}
         src={photos[i].thumbnail_url}
         data-id={i}
-        selectedColor={i === currentPhoto ? 'red' : ''}
+        selectedColor={i === currentPhoto ? 'cornflowerblue' : ''}
         onClick={(e) => {
           const id = Number(e.target.dataset.id);
           setPhoto(Number(id));
@@ -91,49 +93,58 @@ const MainImage = ({ photos }) => {
 
   return (
     <MainContainer>
-      <Gallery>
-        {Thumbnails}
-      </Gallery>
-      <Main src={photos[currentPhoto].url} alt="hi-res product" onClick={setExpanded} />
-      {leftArrowVisible
-        && (
-        <LeftArrow
-          type="button"
-          onClick={() => {
-            if (currentPhoto > 0) {
-              setPhoto(Number(currentPhoto - 1));
-              if (!rightArrowVisible) {
-                enableRightArrow(true);
-              }
-            }
-            if (currentPhoto === 1) {
-              enableLeftArrow(false);
-            }
-          }}
-        >
-          {'<'}
-        </LeftArrow>
-        )}
-      {rightArrowVisible
-        && (
-        <RightArrow
-          type="button"
-          onClick={() => {
-            if (currentPhoto < photos.length - 1) {
-              setPhoto(Number(currentPhoto + 1));
-              if (!leftArrowVisible) {
-                enableLeftArrow(true);
-              }
-            }
-            if (currentPhoto === photos.length - 2) {
-              enableRightArrow(false);
-            }
-          }}
-        >
-          {'>'}
-        </RightArrow>
-        )}
-      {showExpanded ? <div>Expanded View should go here!</div> : null}
+      {!showExpanded ? (
+        <>
+          <Gallery>
+            {Thumbnails}
+          </Gallery>
+          <Main src={photos[currentPhoto].url} alt="hi-res product" onClick={setExpanded} />
+          {leftArrowVisible
+            && (
+            <LeftArrow
+              type="button"
+              onClick={() => {
+                if (currentPhoto > 0) {
+                  setPhoto(Number(currentPhoto - 1));
+                  if (!rightArrowVisible) {
+                    enableRightArrow(true);
+                  }
+                }
+                if (currentPhoto === 1) {
+                  enableLeftArrow(false);
+                }
+              }}
+            >
+              {'<'}
+            </LeftArrow>
+            )}
+          {rightArrowVisible
+            && (
+            <RightArrow
+              type="button"
+              onClick={() => {
+                if (currentPhoto < photos.length - 1) {
+                  setPhoto(Number(currentPhoto + 1));
+                  if (!leftArrowVisible) {
+                    enableLeftArrow(true);
+                  }
+                }
+                if (currentPhoto === photos.length - 2) {
+                  enableRightArrow(false);
+                }
+              }}
+            >
+              {'>'}
+            </RightArrow>
+            )}
+        </>
+      ) : (
+        <ExpandedView
+          showExpanded={showExpanded}
+          setExpanded={setExpanded}
+          imageToExpand={photos[currentPhoto].url}
+        />
+      )}
     </MainContainer>
   );
 };

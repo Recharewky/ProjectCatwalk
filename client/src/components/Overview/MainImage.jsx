@@ -1,8 +1,129 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useState } from 'react';
+import styled from 'styled-components';
 
-const MainImage = ({ photos }) => (
-  <img src={photos[0].url} alt="hi-res product" />
-);
+const Main = styled.img`
+  height: 450px;
+  width: 600px;
+  object-fit: contain;
+  border-radius: 14px;
+  border: 5px solid orange;
+  background-color: black;
+}
+`;
+
+const Thumbnail = styled.img`
+  height: 3em;
+  width: 3em;
+  object-fit: contain;
+  border-radius: 5px;
+  border: 3px solid;
+  background-color: darkgray;
+  border-color: ${(props) => props.selectedColor}
+}
+`;
+
+const LeftArrow = styled.button`
+  height: 3em;
+  width: 3em;
+  background-color: green;
+  border-radius: 5px;
+`;
+
+const RightArrow = styled.button`
+  height: 3em;
+  width: 3em;
+  background-color: green;
+  border-radius: 5px;
+`;
+
+const Gallery = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const MainContainer = styled.div`
+  display: flex;
+`;
+
+const MainImage = ({ photos }) => {
+  const [currentPhoto, setPhoto] = useState(0);
+  const [leftArrowVisible, enableLeftArrow] = useState(false);
+  const [rightArrowVisible, enableRightArrow] = useState(true);
+
+  let i = 0;
+  const Thumbnails = [];
+  for (i = 0; i < photos.length; i += 1) {
+    Thumbnails.push((
+      <Thumbnail
+        key={i}
+        src={photos[i].thumbnail_url}
+        data-id={i}
+        selectedColor={i === currentPhoto ? 'red' : ''}
+        onClick={(e) => {
+          const id = Number(e.target.dataset.id);
+          setPhoto(Number(id));
+          if (id === 0) {
+            enableLeftArrow(false);
+            enableRightArrow(true);
+          } else if (id === photos.length - 1) {
+            enableLeftArrow(true);
+            enableRightArrow(false);
+          } else {
+            enableLeftArrow(true);
+            enableRightArrow(true);
+          }
+        }}
+      />
+    ));
+  }
+
+  return (
+    <MainContainer>
+      <Gallery>
+        {Thumbnails}
+      </Gallery>
+      <Main src={photos[currentPhoto].url} alt="hi-res product" />
+      {leftArrowVisible
+        && (
+        <LeftArrow
+          type="button"
+          onClick={() => {
+            if (currentPhoto > 0) {
+              setPhoto(Number(currentPhoto - 1));
+              if (!rightArrowVisible) {
+                enableRightArrow(true);
+              }
+            }
+            if (currentPhoto === 1) {
+              enableLeftArrow(false);
+            }
+          }}
+        >
+          {'<'}
+        </LeftArrow>
+        )}
+      {rightArrowVisible
+        && (
+        <RightArrow
+          type="button"
+          onClick={() => {
+            if (currentPhoto < photos.length - 1) {
+              setPhoto(Number(currentPhoto + 1));
+              if (!leftArrowVisible) {
+                enableLeftArrow(true);
+              }
+            }
+            if (currentPhoto === photos.length - 2) {
+              enableRightArrow(false);
+            }
+          }}
+        >
+          {'>'}
+        </RightArrow>
+        )}
+    </MainContainer>
+  );
+};
 
 export default MainImage;

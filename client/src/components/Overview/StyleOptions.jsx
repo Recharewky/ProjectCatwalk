@@ -7,15 +7,17 @@ const StyleOptions = ({ styles, currentStyle, onStyleChange }) => {
   const options = styles.results;
 
   return (
-    <form>
-      <legend>
-        Style
-        {'  >  '}
-        {currentStyle.name}
-      </legend>
-      {/* Find a way to reflect the current style selected */}
-      {options.map((style) => <Style style={style} onStyleChange={onStyleChange} />)}
-    </form>
+    <div>
+      <form>
+        <legend>
+          Style
+          {'  >  '}
+          {currentStyle.name}
+        </legend>
+        {/* Find a way to reflect the current style selected */}
+        {options.map((style) => <Style style={style} onStyleChange={onStyleChange} />)}
+      </form>
+    </div>
   );
 };
 

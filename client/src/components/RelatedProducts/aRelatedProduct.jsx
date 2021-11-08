@@ -71,9 +71,18 @@ class ARelatedProduct extends React.Component {
 
     const RelatedProductsDetails = styled.div`
     font-size: 1em;
-    text-align: center;
     padding: 0.5em;
     overflow: hidden;
+    font-weight: 200;
+    & .category {
+      font-size: 0.8em;
+      font-weight: normal;
+    }
+
+    & .name {
+      font-size: 1.2em;
+      font-weight: 500;
+    }
   `;
 
     const Img = styled.img`
@@ -92,10 +101,62 @@ class ARelatedProduct extends React.Component {
   `;
 
     const InnerContainer = styled.div`
-    border: #1c9bef 3px;
+    border: #1c9bef 2px;
     border-style: solid;
-    border-radius: 20px;
+    border-radius: 10px;
     overflow: hidden;
+    transition: 0.3s ease;
+    border-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+    & .content{
+      position: absolute;
+      top:-250px;
+      left: 50%;
+      padding: 10px;
+      transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      font-size: 20px;
+      color: navy;
+      white-space: nowrap;
+      overflow: hidden
+      }
+      & .content a{
+      font-size: 18px;
+      display: block;
+      background-color: #1c9bef;
+      border: 0.1px solid;
+      text-align: center;
+      padding: 5px;
+      cursor: pointer
+      }
+      & .overlay{
+      opacity: 0;
+      position: relative;
+      display: none;
+    }
+    & :hover img{
+      background-color: #fff;
+      transition: .3s ease;
+      opacity: .3
+    }
+    & :hover .overlay{
+      opacity: 1;
+      position: relative;
+      display: block;
+      }
+    & :hover .content {
+      padding: 30px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+    & :hover {
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    }
+
+    & p {
+      display: block;
+      margin: 10px;
+    }
   `;
 
     return (
@@ -105,14 +166,18 @@ class ARelatedProduct extends React.Component {
             <Img className="image" alt="" src={photos} />
           </div>
           <RelatedProductsDetails>
-            Category:
-            {' '}
-            {category}
+            <div className="category">
+              Category:
+              {' '}
+              {category}
+            </div>
           </RelatedProductsDetails>
           <RelatedProductsDetails>
-            Name:
-            {' '}
-            {name}
+            <div className="name">
+              Name:
+              {' '}
+              {name}
+            </div>
           </RelatedProductsDetails>
           <RelatedProductsDetails>
             Price:
@@ -126,6 +191,14 @@ class ARelatedProduct extends React.Component {
             {' '}
             {averageRating}
           </RelatedProductsDetails>
+          <div className="overlay">
+            <div className="content">
+              Love this product?
+              {' '}
+              <p />
+              <a onClick={(event) => console.log('Ive been clicked')}>Read more</a>
+            </div>
+          </div>
         </InnerContainer>
       </Container>
     );

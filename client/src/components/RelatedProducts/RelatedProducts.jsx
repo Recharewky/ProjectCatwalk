@@ -25,6 +25,7 @@ function RelatedProducts(props) {
 
   return (
     <div>
+      <h2 title="relatedProducts">Related Products:</h2>
       <RelatedProductList allRelatedProducts={allRelatedProducts} />
     </div>
   );

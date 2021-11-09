@@ -6,6 +6,7 @@
 import React from 'react';
 import $ from 'jquery';
 import styled from 'styled-components';
+import Modal from './Modal.jsx';
 
 class ARelatedProduct extends React.Component {
   constructor(props) {
@@ -17,7 +18,9 @@ class ARelatedProduct extends React.Component {
       photos: '',
       averageRating: '',
       category: '',
+      showModal: false,
     };
+    this.openModal = this.openModal.bind(this);
   }
 
   componentDidMount() {
@@ -61,6 +64,12 @@ class ARelatedProduct extends React.Component {
     });
   }
 
+  openModal() {
+    this.setState(
+      { showModal: !this.state.showModal },
+    );
+  }
+
   render() {
     const { name } = this.state;
     const { price } = this.state;
@@ -68,6 +77,7 @@ class ARelatedProduct extends React.Component {
     const { averageRating } = this.state;
     const { photos } = this.state;
     const { category } = this.state;
+    const { showModal } = this.state;
 
     const RelatedProductsDetails = styled.div`
     font-size: 1em;
@@ -149,6 +159,15 @@ class ARelatedProduct extends React.Component {
       margin-top: 30px;
       margin-bottom: 30px;
     }
+    & :hover .content a {
+      transition: .3s ease;
+      border-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+    & :active .content a {
+      transform: scale(0.9, 0.9);
+    }
+
     & :hover {
       box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     }
@@ -160,47 +179,50 @@ class ARelatedProduct extends React.Component {
   `;
 
     return (
-      <Container>
-        <InnerContainer>
-          <div className="img">
-            <Img className="image" alt="" src={photos} />
-          </div>
-          <RelatedProductsDetails>
-            <div className="category">
-              Category:
-              {' '}
-              {category}
+      <>
+        <Container>
+          <InnerContainer>
+            <div className="img">
+              <Img className="image" alt="" src={photos} />
             </div>
-          </RelatedProductsDetails>
-          <RelatedProductsDetails>
-            <div className="name">
-              Name:
+            <RelatedProductsDetails>
+              <div className="category">
+                Category:
+                {' '}
+                {category}
+              </div>
+            </RelatedProductsDetails>
+            <RelatedProductsDetails>
+              <div className="name">
+                Name:
+                {' '}
+                {name}
+              </div>
+            </RelatedProductsDetails>
+            <RelatedProductsDetails>
+              Price:
               {' '}
-              {name}
-            </div>
-          </RelatedProductsDetails>
-          <RelatedProductsDetails>
-            Price:
-            {' '}
-            {price}
-            {' '}
-            CAD
-          </RelatedProductsDetails>
-          <RelatedProductsDetails>
-            Rating:
-            {' '}
-            {averageRating}
-          </RelatedProductsDetails>
-          <div className="overlay">
-            <div className="content">
-              Love this product?
+              {price}
               {' '}
-              <p />
-              <a onClick={(event) => console.log('Ive been clicked')}>Read more</a>
+              CAD
+            </RelatedProductsDetails>
+            <RelatedProductsDetails>
+              Rating:
+              {' '}
+              {averageRating}
+            </RelatedProductsDetails>
+            <div className="overlay">
+              <div className="content">
+                Love this product?
+                {' '}
+                <p />
+                <a onClick={(event) => this.openModal(event)}>Compare</a>
+              </div>
             </div>
-          </div>
-        </InnerContainer>
-      </Container>
+          </InnerContainer>
+        </Container>
+        <Modal showModal={showModal} openModal={this.openModal} />
+      </>
     );
   }
 }

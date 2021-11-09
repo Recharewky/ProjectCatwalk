@@ -14,8 +14,20 @@ const getReviews = (id) =>
     }
   })
 
+  const getMetaReviews = (id) =>
+  axios({
+    method: 'get',
+    url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/meta',
+    params: {
+      product_id: id
+    },
+    headers: {
+      'Authorization': TOKEN.TOKEN
+    }
+  });
 module.exports = {
-  getReviews
+  getReviews,
+  getMetaReviews
 }
 
 

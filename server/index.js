@@ -35,6 +35,17 @@ app.get('/reviews', (req, res) => {
       })
 })
 
+app.get('/reviews/meta', (req, res) => {
+  var id = req.query.product_id;
+  reviews.getMetaReviews(id)
+    .then((data) => {
+      res.status(200).send(data.data);
+    })
+    .catch((err) => {
+      res.status(404).send(err);
+    });
+});
+
 
 
 // module.export = app;

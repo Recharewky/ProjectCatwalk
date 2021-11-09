@@ -5,36 +5,141 @@ class AddReview extends React.Component {
   constructor() {
     super();
     this.state = {
-      // overallRating: 0,
-      // recommended: null,
-      body: '',
-      name: '',
-      summary: '',
-      // rating: null
+
     }
     this.handleReviewSubmit = this.handleReviewSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(event) {
-    event.preventDefault();
+  // handleChange(event) {
+  //   event.preventDefault();
+  //   this.setState({
+  //     [event.target.name]: event.target.value,
+  //   });
+  // }
+  handleChange(e) {
+    const { name } = e.target;
+    const { value } = e.target;
     this.setState({
-      [event.target.name]: event.target.value,
+      [name]: value,
     });
   }
 
   handleReviewSubmit(event) {
-    const { summary } = this.state;
-    const { body } = this.state;
-    const { name } = this.state;
+    event.preventDefault();
+    const message = 'You must enter the following:';
+    const {
+      overallRating,
+      recommended,
+      body,
+      email,
+      nickname,
+    } = this.state;
 
+    if (overallRating === undefined) {
+      alert(`${message} please select an overall rating`);
+    }
+    if (recommended === undefined) {
+      alert(`${message} please select a recommendation`);
+    }
+
+    if (body === undefined) {
+      alert(`${message} please submit a review body`);
+    }
+    if (nickname === undefined) {
+      alert(`${message} please enter your nickname`);
+    }
+    if (email === undefined) {
+      alert(`${message} please enter your email address`);
+    }
   }
 
   render() {
     return (
       <div>
         <h1> Write a New Review!</h1>
-        <form onSubmit={this.handleReviewSubmit} />
+        <form onSubmit={this.handleReviewSubmit}>
+          <label htmlFor="overallRating">
+            Over-All Rating:
+            <br />
+            <input
+              id="overallRating"
+              name="overallRating"
+              type="range"
+              min="0"
+              max="5"
+              step="1"
+
+              onChange={this.handleChange}
+            />
+          </label>
+          <br />
+          <div>
+            <p>Do you recommend this product?</p>
+            <label htmlFor="yes">
+              Yes
+              <input
+                type="radio"
+                id="yes"
+                name="recommended"
+                value="yes"
+                onChange={this.handleChange}
+              />
+            </label>
+            <label htmlFor="no">
+              No
+              <input
+                type="radio"
+                id="no"
+                name="recommended"
+                value="no"
+                onChange={this.handleChange}
+              />
+            </label>
+          </div>
+
+          <h4>Subject line:</h4>
+          <input
+            type="text"
+            id="summary"
+            name="summary"
+            placeholder="TLDR"
+            onChange={this.handleChange}
+          />
+
+          <br />
+          <div>
+            <h4>Your Review:</h4>
+            <textarea
+              name="body"
+              defaultValue="What do you think?"
+              onChange={this.handleChange}
+            />
+          </div>
+          <br />
+          <h4>Please enter user name: </h4>
+          <input
+            type="text"
+            id="nickname"
+            name="nickname"
+            placeholder="enter username here ..."
+            onChange={this.handleChange}
+          />
+
+          <h4>Your email *</h4>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="enter email here ..."
+            onChange={this.handleChange}
+          />
+
+          <br />
+          <input
+            type="submit"
+          />
+        </form>
 
       </div>
     )

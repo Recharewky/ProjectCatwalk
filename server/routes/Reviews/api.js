@@ -31,6 +31,7 @@ const getAProduct = function (productID, callback) {
       productObj.default_price = Number(response.data.default_price);
       productObj.description = response.data.description;
       productObj.category = response.data.category;
+      productObj.features = response.data.features;
       axios({
         method: 'GET',
         url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/meta/?product_id=${productID}`,

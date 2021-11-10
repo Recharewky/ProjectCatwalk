@@ -7,7 +7,7 @@ import ARelatedProduct from './aRelatedProduct';
 // import './style.scss';
 // import PropTypes from 'prop-types';
 
-const RelatedProductList = ({ allRelatedProducts }) => {
+const RelatedProductList = ({ allRelatedProducts, currentProduct }) => {
   const ArrowLeft = styled.div`
   cursor: pointer;
   height: 40px;
@@ -174,6 +174,7 @@ const RelatedProductList = ({ allRelatedProducts }) => {
 
   const scrollLeft = () => {
     if (listRef.current) {
+      console.log(listRef.current);
       listRef.current.scrollBy({
         top: 0,
         left: 500,
@@ -205,6 +206,7 @@ const RelatedProductList = ({ allRelatedProducts }) => {
           <ARelatedProduct
             key={aProduct}
             aProduct={aProduct}
+            currentProduct={currentProduct}
           />
         ))}
       </Container>

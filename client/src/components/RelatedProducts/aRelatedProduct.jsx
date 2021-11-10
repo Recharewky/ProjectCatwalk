@@ -14,7 +14,7 @@ class ARelatedProduct extends React.Component {
     this.state = {
       name: '',
       price: 0,
-      description: '',
+      features: [],
       photos: '',
       averageRating: '',
       category: '',
@@ -53,7 +53,7 @@ class ARelatedProduct extends React.Component {
           {
             name: success.name,
             price: Number(success.default_price),
-            description: success.description,
+            features: success.features,
             photos: success.photos[0].photos[0].thumbnail_url,
             averageRating: average,
             category: success.category,
@@ -78,6 +78,8 @@ class ARelatedProduct extends React.Component {
     const { photos } = this.state;
     const { category } = this.state;
     const { showModal } = this.state;
+    const { features } = this.state;
+    const { currentProduct } = this.props;
 
     const RelatedProductsDetails = styled.div`
     font-size: 1em;
@@ -221,7 +223,7 @@ class ARelatedProduct extends React.Component {
             </div>
           </InnerContainer>
         </Container>
-        <Modal showModal={showModal} openModal={this.openModal} />
+        <Modal showModal={showModal} openModal={this.openModal} compareProdName={name} compareProdFeatures={features} currentProductName={currentProduct.name} currentProductFeatures={currentProduct.features} />
       </>
     );
   }

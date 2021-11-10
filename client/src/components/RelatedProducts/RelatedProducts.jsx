@@ -6,6 +6,7 @@ import RelatedProductList from './RelatedProductList.jsx';
 
 function RelatedProducts(props) {
   const [allRelatedProducts, setDisplay] = useState([]);
+  const [currentProduct, setCurrent] = useState({});
   const { id } = props;
 
   useEffect(() => {
@@ -17,7 +18,18 @@ function RelatedProducts(props) {
       success: (success) => {
         const successSet = new Set(success);
         const arr = Array.from(successSet); // duplicates
-        setDisplay(arr);
+
+        $.ajax({
+          type: 'POST',
+          url: `/relatedProducts/postAProduct/${id}`,
+          contentType: 'application.json',
+          data: JSON.stringify({ id }),
+          success: (success1) => {
+            setCurrent(success1);
+            setDisplay(arr);
+          },
+          error: (err) => console.log('error', err),
+        });
       },
       error: (err) => console.log('error', err),
     });
@@ -25,7 +37,8 @@ function RelatedProducts(props) {
 
   return (
     <div>
-      <RelatedProductList allRelatedProducts={allRelatedProducts} />
+      <h2 title="relatedProducts">Related Products:</h2>
+      <RelatedProductList allRelatedProducts={allRelatedProducts} currentProduct={currentProduct} />
     </div>
   );
 }

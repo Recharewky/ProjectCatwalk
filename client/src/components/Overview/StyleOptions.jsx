@@ -7,7 +7,11 @@ import Style from './Style.jsx';
 const StylesContainer = styled.div`
   grid-column: 2;
   grid-row: 3;
-  background-color: pink;
+  background-color: ;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 66%;
 `;
 
 const StyleOptions = ({ styles, currentStyle, onStyleChange }) => {

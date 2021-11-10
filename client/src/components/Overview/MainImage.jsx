@@ -9,10 +9,11 @@ const Main = styled.img`
   width: 600px;
   object-fit: contain;
   border-radius: 14px;
-  border: 5px solid cornflowerblue;
+  border: 3px solid cornflowerblue;
   background-color: black;
   cursor: zoom-in;
-}
+  grid-column: 2;
+  grid-row: 2 / span 2;
 `;
 
 const Thumbnail = styled.img`
@@ -24,7 +25,6 @@ const Thumbnail = styled.img`
   background-color: darkgray;
   border-color: ${(props) => props.selectedColor};
   cursor: pointer;
-}
 `;
 
 const LeftArrow = styled.button`
@@ -34,6 +34,8 @@ const LeftArrow = styled.button`
   border-radius: 5px;
   cursor: pointer;
   z-index: 3;
+  grid-column: 1;
+  grid-row: 3;
 `;
 
 const RightArrow = styled.button`
@@ -43,15 +45,28 @@ const RightArrow = styled.button`
   border-radius: 5px;
   cursor: pointer;
   z-index: 3;
+  grid-column: 3;
+  grid-row: 3;
 `;
 
 const Gallery = styled.div`
   display: flex;
   flex-direction: row;
+  grid-column: 2;
+  grid-row: 5;
+  justify-self: center;
+  align-self: end;
 `;
 
 const MainContainer = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 35px 600px 35px;
+  grid-template-rows: 50px 210px 35px 210px 60px;
+  grid-column: 1;
+  grid-row: 1 / span 4;
+  grid-column-gap: 8px;
+  background-color: aquamarine;
+  width: 686px;
 `;
 
 const MainImage = ({ photos }) => {

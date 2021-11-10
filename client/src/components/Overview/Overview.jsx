@@ -12,9 +12,12 @@ import Selection from './Selection.jsx';
 import dummyData from '../../../../dummyData.js';
 
 const OverviewContainer = styled.div`
-  display: inline-flex;
+  display: grid;
+  grid-template-columns: 670px 400px;
+  grid-template-rows: 30px 280px 140px 80px;
   background-color: papayawhip;
   width: 100%;
+  gap: 30px;
 `;
 
 class Overview extends React.Component {
@@ -33,7 +36,6 @@ class Overview extends React.Component {
     this.setState({
       currentStyle: style,
     });
-
   }
 
   render() {
@@ -42,17 +44,13 @@ class Overview extends React.Component {
       <div>
         <OverviewContainer>
           <MainImage photos={currentStyle.photos} />
-          <div>
-            <ProductInfo info={info} />
-            <StyleOptions
-              styles={styles}
-              currentStyle={currentStyle}
-              onStyleChange={this.onStyleChange}
-            />
-          </div>
-          <div>
-            <Selection currentStyle={currentStyle} />
-          </div>
+          <ProductInfo info={info} />
+          <StyleOptions
+            styles={styles}
+            currentStyle={currentStyle}
+            onStyleChange={this.onStyleChange}
+          />
+          <Selection currentStyle={currentStyle} />
         </OverviewContainer>
         <Description info={info} />
       </div>

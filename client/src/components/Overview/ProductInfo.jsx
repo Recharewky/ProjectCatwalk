@@ -3,7 +3,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Info = styled.div`
-  flex-basis: 30%;
+  background-color: darkseagreen;
+  grid-column: 2;
+  grid-row: 2;
 `;
 
 const ProductInfo = ({ info }) => (

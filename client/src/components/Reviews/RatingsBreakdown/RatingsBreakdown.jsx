@@ -31,7 +31,7 @@ class RatingBreakdown extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product_id: 25193,
+      product_id: props.id,
       average: 0,
       ratings: {},
       recommended: 0,
@@ -59,6 +59,7 @@ class RatingBreakdown extends React.Component {
     var ratings = data.data.ratings;
     var count = 0;
     var total = 0;
+    var patsyAvg = Math.round(total / count * 10) / 10;
     var countTrue = parseInt(data.data.recommended.true);
     var countFalse = parseInt(data.data.recommended.false);
     var breakdownArray = [];
@@ -75,21 +76,27 @@ class RatingBreakdown extends React.Component {
         breakdownArray.push([i, '0', 0]);
       }
     }
+    if (!Number.isNaN(patsyAvg)) {
+      patsyAvg = patsyAvg.toString();
+    } else {
+      patsyAvg = 'No ratings yet';
+    }
 
     this.setState({
       recommended: Math.round(countTrue / (countFalse + countTrue) * 100),
       characteristics: data.data.characteristics,
-      average: Math.round(total / count * 10) / 10,
+      average: patsyAvg,
       count: count,
       breakdownArray: breakdownArray
     });
   }
 
   componentDidMount() {
-    this.getMetaReviews(25193, this.getAvg);
+    this.getMetaReviews(this.props.id, this.getAvg);
   }
 
   render() {
+    console.log(this)
     return (
       <RatingBreakdown_div>
         <AvgContainer>

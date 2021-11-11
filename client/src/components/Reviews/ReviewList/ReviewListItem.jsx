@@ -1,5 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect }from 'react';
+import Photo from './Photo.jsx';
+import Stars from '../Styles.jsx';
+import axios from 'axios';
+import TOKEN from '../../../../../config.js';
 import styled from 'styled-components';
+import moment from 'moment';
 
 const ReviewItem_Container = styled.div `
   display:flex;
@@ -20,36 +25,58 @@ const Paragraph_Container = styled.div `
   background: white;
 
 `;
-const reviewerName = {
+const reviewerNameStyle = {
   fontSize: '18px',
   color: 'teal'
 }
-const summary = {
+const summaryStyle = {
   fontSize: '13px',
   color: 'grey'
 }
 
 
-class ReviewListItem extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+const ReviewListItem = (props) => {
+  const [id, setId] = useState(0);
+  const [starRating, setStars] = useState(5);
+  const [date, setDate] = useState(0);
+  const [reviewSummary, setSummary] = useState('heyo');
+  const [reviewBody, setRevBod] = useState('wat');
+  const [photos, setPhotos] = useState([]);
+  const [recommended, setReco] = useState(true);
+  const [reviewerName, setName] = useState('user');
+  const [response, setResponse] = useState('response');
+  const [helpfulness, setHelpful] = useState(0);
+  const [voted, setVotes] = useState(false);
 
-  render(props) {
-    console.log(this.props)
+  useEffect(() => {
+    setParams();
+  }, []);
+
+  const setParams = () => {
+    setId(props.review.review_id);
+    setStars(props.review.rating);
+    setDate(props.review.date);
+    setSummary(props.review.summary);
+    setPhotos(props.review.photos);
+    setReco(props.review.recommend);
+    setName(props.review.reviewer_name);
+    setResponse(props.review.response);
+    setHelpful(props.review.helpfulness);
+    setRevBod(props.review.body);
+  }
     return (
       <ReviewItem_Container>
       <div>
 
-        <h1 style={reviewerName}>{this.props.review.reviewer_name}</h1>
+        <h1 style={reviewerNameStyle}>{reviewerName}</h1>
         <Paragraph_Container>
-          <h2 style={summary}>-- {this.props.review.summary}</h2>
-          <p>-- {this.props.review.body}</p>
+          <h2 style={summaryStyle}>-- {reviewSummary}</h2>
+          <p>-- {reviewBody}</p>
         </Paragraph_Container>
       </div>
       </ReviewItem_Container>
     )
-  }
 }
+
 
 export default ReviewListItem;

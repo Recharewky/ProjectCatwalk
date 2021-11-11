@@ -1,8 +1,6 @@
 const express = require('express');
 const axios = require('axios');
-const reviews = require('./routes/Reviews/api.js');
-
-
+const api = require('./routes/Reviews/api.js');
 
 const app = express();
 const PORT = 3000;
@@ -10,20 +8,36 @@ const PORT = 3000;
 app.use(express.static('client/public'));
 app.use(express.json());
 
+app.post('/relatedProducts/post/:id', (req, res) => {
+  api.getAllRelatedProducts(req.params.id, (err, success) => {
+    if (err) {
+      console.log('Error in fetching data from API');
+      res.sendStatus(400);
+    } else {
+      console.log(success.data);
+      res.status(201).send(success.data);
+    }
+  });
+});
 
-app.listen(PORT, () => {
-  console.log(`Server listening on port: ${PORT}`);
-})
-//***********Overview***************//
+app.post('/relatedProducts/postAProduct/:id', (req, res) => {
+  api.getAProduct(req.params.id, (err, success) => {
+    if (err) {
+      console.log('Error in fetching data from API');
+      res.sendStatus(400);
+    } else {
+      res.status(201).send(success);
+    }
+  });
+});
 
+//* **********Overview***************//
 
-//***********Related***************//
+//* **********Related***************//
 
+//* **********QA***************//
 
-//***********QA***************//
-
-
-//***********Reviews***************//
+//* **********Reviews***************//
 app.get('/reviews', (req, res) => {
   console.log('get request from server')
   reviews.getReviews(req.query.product_id)
@@ -38,6 +52,7 @@ app.get('/reviews', (req, res) => {
 app.get('/reviews/meta', (req, res) => {
   var id = req.query.product_id;
   reviews.getMetaReviews(id)
+
     .then((data) => {
       res.status(200).send(data.data);
     })
@@ -46,6 +61,10 @@ app.get('/reviews/meta', (req, res) => {
     });
 });
 
+app.listen(PORT, () => {
+  console.log(`Server listening on port: ${PORT}`);
+});
 
 
-// module.export = app;
+
+module.export = app;

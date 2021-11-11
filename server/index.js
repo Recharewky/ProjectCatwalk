@@ -31,10 +31,6 @@ app.post('/relatedProducts/postAProduct/:id', (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server listening on port: ${PORT}`);
-});
-
 //* **********Overview***************//
 
 //* **********Related***************//
@@ -43,8 +39,20 @@ app.listen(PORT, () => {
 
 //* **********Reviews***************//
 app.get('/reviews', (req, res) => {
-  console.log('get request from server');
-  api.getReviews(req.query.product_id)
+  console.log('get request from server')
+  reviews.getReviews(req.query.product_id)
+      .then((data) => {
+          res.status(200).send(data.data);
+      })
+      .catch((err) => {
+          res.status(404).send(err);
+      })
+})
+
+app.get('/reviews/meta', (req, res) => {
+  var id = req.query.product_id;
+  reviews.getMetaReviews(id)
+
     .then((data) => {
       res.status(200).send(data.data);
     })
@@ -52,5 +60,11 @@ app.get('/reviews', (req, res) => {
       res.status(404).send(err);
     });
 });
+
+app.listen(PORT, () => {
+  console.log(`Server listening on port: ${PORT}`);
+});
+
+
 
 module.export = app;

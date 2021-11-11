@@ -46,8 +46,8 @@ class ReviewList extends React.Component {
   }
 
   componentDidMount() {
-    console.log('component mounted');
-    this.getReviews(61575);
+    console.log('component mounted', this.props.id);
+    this.getReviews(this.props.id);
   }
 
   handleMoreReviews() {

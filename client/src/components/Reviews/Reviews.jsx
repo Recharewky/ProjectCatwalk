@@ -1,54 +1,47 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ReviewList from './ReviewList/ReviewList.jsx';
-import ReviewMetrics from './ReviewMetrics/ReviewMetrics.jsx';
+import RatingsBreakdown from './RatingsBreakdown/RatingsBreakdown.jsx';
 import styled from 'styled-components';
 
-const Container = styled.div`
-width: 60%;
-display: flex;
-flex-direction: column;
-`;
-const heading = {
+const HeadingContainer = styled.div`
   fontSize: '32px',
   color: 'teal'
-}
+`;
+
+const Container = styled.div`
+width: 750%;
+display: flex;
+flex-direction: row;
+`;
+
 const ReviewsContainer = styled.div`
-width: 500px;
 display: flex;
-flex-direction: column;
-flex-wrap: column;
-padding: 0 500px;
+flex-direction: row;
+flex-wrap: row;
 justify-content: space-between;
 `;
-const ReviewMetricsContainer = styled.div`
-width: 500px;
+const RatingsBreakdownContainer = styled.div`
 display: flex;
-flex-direction: column;
+flex-direction: row;
 flex-wrap: column;
 justify-content: space-between;
 `;
 
-class Reviews extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
+const Reviews = (props) => {
+  const [starFilter, setFilter] = useState(0)
+  const starFilterer = (star) => setFilter(star);
     return (
-
+      // <HeadingContainer> <div><h1>Ratings and Reviews</h1></div>  </HeadingContainer>
       <Container>
-
-        <h1 style={heading}> Ratings and Reviews
-        </h1>
-        <ReviewMetricsContainer>
-          <ReviewMetrics id={this.props.id}/>
-        </ReviewMetricsContainer>
+        <RatingsBreakdownContainer>
+          <RatingsBreakdown filterStar= {starFilterer}id={props.id}/>
+        </RatingsBreakdownContainer>
         <ReviewsContainer>
-          <ReviewList id={this.props.id}/>
+          <ReviewList filterStar= {starFilterer} id={props.id}/>
         </ReviewsContainer>
-
       </Container>
     )
-  }
 }
+
 
 export default Reviews;

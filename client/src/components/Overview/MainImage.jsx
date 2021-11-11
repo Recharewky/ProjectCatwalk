@@ -65,7 +65,7 @@ const MainContainer = styled.div`
   grid-column: 1;
   grid-row: 1 / span 4;
   grid-column-gap: 8px;
-  background-color: aquamarine;
+  border: solid black;
   width: 686px;
 `;
 

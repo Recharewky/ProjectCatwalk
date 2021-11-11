@@ -7,7 +7,7 @@ import Style from './Style.jsx';
 const StylesContainer = styled.div`
   grid-column: 2;
   grid-row: 3;
-  background-color: ;
+  border: solid black;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

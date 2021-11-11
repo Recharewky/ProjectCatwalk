@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Info = styled.div`
-  background-color: darkseagreen;
+  border: solid black;
   grid-column: 2;
   grid-row: 2;
 `;

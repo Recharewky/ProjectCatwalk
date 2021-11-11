@@ -1,5 +1,10 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import styled from 'styled-components';
+
+const DescStyle = styled.div`
+  border: solid black;
+`;
 
 const Description = ({ info }) => {
   const featureList = [];
@@ -9,7 +14,7 @@ const Description = ({ info }) => {
   }
 
   return (
-    <div>
+    <DescStyle>
       Description
       <div>
         {info.description}
@@ -18,7 +23,7 @@ const Description = ({ info }) => {
         Features
         {featureList}
       </ul>
-    </div>
+    </DescStyle>
   );
 };
 

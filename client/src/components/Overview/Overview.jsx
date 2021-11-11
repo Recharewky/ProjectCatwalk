@@ -15,7 +15,7 @@ const OverviewContainer = styled.div`
   display: grid;
   grid-template-columns: 670px 400px;
   grid-template-rows: 30px 280px 140px 80px;
-  background-color: papayawhip;
+  border: solid black;
   width: 100%;
   gap: 30px;
 `;

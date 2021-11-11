@@ -7,16 +7,16 @@ const StyledButton = styled.button`
   cursor: pointer;
   border-width: 5px;
   border-color: ${(props) => props.accent};
+  border-style: solid;
   background-color: ${(props) => props.main};
   height: 45px;
   width: 45px;
   margin-right: 15px;
   margin-bottom: 8px;
   margin-top: 8px;
+  background-image: linear-gradient(to bottom right, ${(props) => props.main} 16%, ${(props) => props.accent});
+  z-index: 5;
 `;
-
-// background-image: linear-gradient(to bottom right,
-// ${(props) => props.main} 33%, ${(props) => props.accent});
 
 const Style = ({ style, onStyleChange }) => {
   let mainColor = style.name.substring(style.name.indexOf(' ') + 1);

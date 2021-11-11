@@ -3,9 +3,10 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const SelectContainer = styled.div`
-  background-color: mediumslateblue;
+  border: solid black;
   grid-column: 2;
   grid-row: 4;
+
 `;
 
 const Selection = ({ currentStyle }) => {

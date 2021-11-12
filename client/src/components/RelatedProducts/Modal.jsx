@@ -14,7 +14,6 @@ const Modal = (props) => {
   const { compareProdName } = props;
   const { currentProductFeatures } = props;
   const { currentProductName } = props;
-  const [finalCompareProducts, compareDisplay] = useState([]);
   console.log(props);
 
   const compareFunc = () => {
@@ -26,6 +25,15 @@ const Modal = (props) => {
     for (let i = 0; i < currentProductFeatures.length; i++) {
       setFeatures[currentProductFeatures[i].feature] = [currentProductFeatures[i].value];
     }
+    /*
+    map -> returns new array
+    foreach -> alters something to each item in old array
+      currentProductFeatures.map( (item) => {
+        return(
+          setFeatures
+        )
+      })
+    */
 
     for (let i = 0; i < compareProdFeatures.length; i++) {
       if (setFeatures[compareProdFeatures[i].feature] === undefined) {
@@ -72,93 +80,6 @@ const Modal = (props) => {
       props.openModal();
     }
   };
-
-  const Background = styled.div`
-  width: 100%;
-  height: 100vh;
-  overflow-y: hidden;
-  top: 0px;
-  left: 0px;
-  z-index: 10;
-  background: rgba(0, 0, 0, 0.8);
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-  const ModalWrapper = styled.div`
-  width: 70vw;
-  height: 500px;
-  left: -32vw;
-  top: -28vh;
-  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
-  background: #fff;
-  color: #000;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  position: absolute;
-  z-index: 10;
-  border-radius: 10px;
-
-  & i {
-    padding: 4px;
-  }
-`;
-
-  const ModalContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  line-height: 1.8;
-  color: #141414;
-  p {
-    margin-bottom: 1rem;
-  }
-  div {
-    padding: 4px;
-    margin: 0px;
-  }
-  button {
-    padding: 10px 24px;
-    background: #141414;
-    color: #fff;
-    border: none;
-    margin-top: 20px;
-  }
-
-  & .hide {
-    visibility: hidden;
-  }
-  & h1 {
-    top: 3rem;
-  }
-
-  & .fas.fa-check {
-    color: navy;
-    transform: scale(1.5);
-  }
-`;
-
-  const CloseModalButton = styled(MdClose)`
-  cursor: pointer;
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  z-index: 10;
-
-  & :hover {
-    transform: scale(1.1, 1.1);
-  }
-
-  & :active {
-    transform: scale(-0.9, 0.9);
-  }
-`;
 
   return (
     <>
@@ -209,5 +130,92 @@ const Modal = (props) => {
 
   );
 };
+
+const Background = styled.div`
+width: 100%;
+height: 100vh;
+overflow-y: hidden;
+top: 0px;
+left: 0px;
+z-index: 10;
+background: rgba(0, 0, 0, 0.8);
+position: fixed;
+display: flex;
+justify-content: center;
+align-items: center;
+`;
+
+const ModalWrapper = styled.div`
+width: 70vw;
+height: 500px;
+left: -32vw;
+top: -28vh;
+box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
+background: #fff;
+color: #000;
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+position: absolute;
+z-index: 10;
+border-radius: 10px;
+
+& i {
+  padding: 4px;
+}
+`;
+
+const ModalContent = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+line-height: 1.8;
+color: #141414;
+p {
+  margin-bottom: 1rem;
+}
+div {
+  padding: 4px;
+  margin: 0px;
+}
+button {
+  padding: 10px 24px;
+  background: #141414;
+  color: #fff;
+  border: none;
+  margin-top: 20px;
+}
+
+& .hide {
+  visibility: hidden;
+}
+& h1 {
+  top: 3rem;
+}
+
+& .fas.fa-check {
+  color: navy;
+  transform: scale(1.5);
+}
+`;
+
+const CloseModalButton = styled(MdClose)`
+cursor: pointer;
+position: absolute;
+top: 20px;
+right: 20px;
+width: 32px;
+height: 32px;
+padding: 0;
+z-index: 10;
+
+& :hover {
+  transform: scale(1.1, 1.1);
+}
+
+& :active {
+  transform: scale(-0.9, 0.9);
+}
+`;
 
 export default Modal;

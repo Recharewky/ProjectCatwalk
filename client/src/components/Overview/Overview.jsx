@@ -49,7 +49,11 @@ class Overview extends React.Component {
       <OverviewContainer>
         <ProductInfoContainer>
           <MainImage photos={currentStyle.photos} />
-          <ProductInfo info={info} />
+          <ProductInfo
+            info={info}
+            originalPrice={currentStyle.original_price}
+            salePrice={currentStyle.sale_price}
+          />
           <StyleOptions
             styles={styles}
             currentStyle={currentStyle}

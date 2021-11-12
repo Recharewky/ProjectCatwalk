@@ -27,6 +27,11 @@ const Category = styled.div`
   color: white;
   border-radius: 25px;
   cursor: pointer;
+
+  &:hover {
+    color: black;
+    background-color: cornflowerblue;
+  }
 `;
 
 const ProductName = styled.div`
@@ -53,23 +58,45 @@ const Price = styled.div`
   padding-left: 10px;
 `;
 
-const ProductInfo = ({ info }) => (
-  <Info>
-    <Category>
-      {info.category}
-    </Category>
-    <ProductName>
-      {info.name}
-    </ProductName>
-    <Slogan>
-      {info.slogan}
-    </Slogan>
-    <Price>
-      $
-      {` ${info.default_price}`}
-    </Price>
-  </Info>
+const SaleDisplay = styled.div`
+  text-decoration-line: line-through;
+  color: darkred;
+  font-style: oblique;
+  font-size: 16px;
+  display: inline;
+`;
 
-);
+const PercentageContainer = styled.div`
+  font-size: 14px;
+  font-style: oblique;
+  color: red;
+`;
+
+const ProductInfo = ({ info, originalPrice, salePrice }) => {
+  const sale = <SaleDisplay>{originalPrice}</SaleDisplay>;
+  const percentage = 100 - Math.floor((salePrice / originalPrice) * 100);
+
+  return (
+    <Info>
+      <Category>
+        {info.category}
+      </Category>
+      <ProductName>
+        {info.name}
+      </ProductName>
+      <Slogan>
+        {info.slogan}
+      </Slogan>
+      <Price onSale={salePrice !== null}>
+        {salePrice ? (
+          <PercentageContainer>{`On Sale! ~${percentage}% off!`}</PercentageContainer>
+        ) : null}
+        $
+        {salePrice ? ` ${salePrice}     ` : ` ${originalPrice}`}
+        {salePrice ? sale : null}
+      </Price>
+    </Info>
+  );
+};
 
 export default ProductInfo;

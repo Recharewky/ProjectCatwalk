@@ -9,10 +9,24 @@ import StyleOptions from './StyleOptions.jsx';
 import Description from './Description.jsx';
 import Selection from './Selection.jsx';
 
-const OverviewContainer = styled.div`
-  display: inline-flex;
-  background-color: papayawhip;
+const ProductInfoContainer = styled.div`
+  display: grid;
+  grid-template-columns: 670px 400px;
+  grid-template-rows: 30px 280px 140px 80px;
+  border: solid black;
   width: 100%;
+  gap: 30px;
+`;
+
+const DescriptionContainer = styled.div`
+  display: flex;
+  align-content: center;
+  justify-content: center;
+`;
+
+const OverviewContainer = styled.div`
+  grid-row: 1;
+  justify-self: center;
 `;
 
 class Overview extends React.Component {
@@ -56,27 +70,25 @@ class Overview extends React.Component {
   render() {
     const { info, styles, currentStyle } = this.state;
     return (
-      <div>
-        {info ? (
-          <div>
-            <OverviewContainer>
-              <MainImage photos={currentStyle.photos} />
-              <div>
-                <ProductInfo info={info} />
-                <StyleOptions
-                  styles={styles}
-                  currentStyle={currentStyle}
-                  onStyleChange={this.onStyleChange}
-                />
-              </div>
-              <div>
-                <Selection currentStyle={currentStyle} />
-              </div>
-            </OverviewContainer>
-            <Description info={info} />
-          </div>
-        ) : null}
-      </div>
+      <OverviewContainer>
+        <ProductInfoContainer>
+          <MainImage photos={currentStyle.photos} />
+          <ProductInfo
+            info={info}
+            originalPrice={currentStyle.original_price}
+            salePrice={currentStyle.sale_price}
+          />
+          <StyleOptions
+            styles={styles}
+            currentStyle={currentStyle}
+            onStyleChange={this.onStyleChange}
+          />
+          <Selection currentStyle={currentStyle} />
+        </ProductInfoContainer>
+        <DescriptionContainer>
+          <Description info={info} />
+        </DescriptionContainer>
+      </OverviewContainer>
     );
   }
 }

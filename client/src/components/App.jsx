@@ -23,17 +23,22 @@ class App extends React.Component {
   render() {
     const { id } = this.state;
     return (
-
       <Container>
-        Hello World
         <Overview id={id} />
-        <RelatedProduct id={id} />
-        <Reviews id={id} />
+        {/* <RelatedProduct id={id} />
+        <Reviews id={id} /> */}
         {/* <QA /> */}
       </Container>
 
     );
   }
 }
+
+const Container = styled.div`
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+`;
 
 export default App;

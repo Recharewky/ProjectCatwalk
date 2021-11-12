@@ -20,6 +20,12 @@ const ProductInfoContainer = styled.div`
   gap: 30px;
 `;
 
+const DescriptionContainer = styled.div`
+  display: flex;
+  align-content: center;
+  justify-content: center;
+`;
+
 const OverviewContainer = styled.div`
   grid-row: 1;
   justify-self: center;
@@ -61,7 +67,9 @@ class Overview extends React.Component {
           />
           <Selection currentStyle={currentStyle} />
         </ProductInfoContainer>
-        <Description info={info} />
+        <DescriptionContainer>
+          <Description info={info} />
+        </DescriptionContainer>
       </OverviewContainer>
     );
   }

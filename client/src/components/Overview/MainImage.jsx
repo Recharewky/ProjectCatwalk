@@ -52,6 +52,7 @@ const RightArrow = styled.button`
 const Gallery = styled.div`
   display: flex;
   flex-direction: row;
+  column-gap: 5px;
   grid-column: 2;
   grid-row: 5;
   justify-self: center;

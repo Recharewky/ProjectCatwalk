@@ -6,7 +6,7 @@ const SelectContainer = styled.div`
   border: solid black;
   grid-column: 2;
   grid-row: 4;
-
+  margin-left: 15px;
 `;
 
 const Selection = ({ currentStyle }) => {

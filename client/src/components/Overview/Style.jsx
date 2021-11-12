@@ -41,7 +41,7 @@ const Style = ({ style, onStyleChange, currentStyle }) => {
       onClick={(e) => { onStyleChange(e, style); }}
       main={mainColor}
       accent={accentColor}
-      selected={selected ? 'solid' : 'none'}
+      selected={selected ? 'dotted' : 'none'}
     />
   );
 };

@@ -1,6 +1,7 @@
 const express = require('express');
 const axios = require('axios');
 const api = require('./routes/Reviews/api.js');
+const overviewController = require('./routes/Overview/controller.js');
 
 const app = express();
 const PORT = 3000;
@@ -39,19 +40,19 @@ app.post('/relatedProducts/postAProduct/:id', (req, res) => {
 
 //* **********Reviews***************//
 app.get('/reviews', (req, res) => {
-  console.log('get request from server')
-  reviews.getReviews(req.query.product_id)
-      .then((data) => {
-          res.status(200).send(data.data);
-      })
-      .catch((err) => {
-          res.status(404).send(err);
-      })
-})
+  console.log('get request from server');
+  api.getReviews(req.query.product_id)
+    .then((data) => {
+      res.status(200).send(data.data);
+    })
+    .catch((err) => {
+      res.status(404).send(err);
+    });
+});
 
 app.get('/reviews/meta', (req, res) => {
-  var id = req.query.product_id;
-  reviews.getMetaReviews(id)
+  const id = req.query.product_id;
+  api.getMetaReviews(id)
 
     .then((data) => {
       res.status(200).send(data.data);
@@ -61,10 +62,12 @@ app.get('/reviews/meta', (req, res) => {
     });
 });
 
+app.get('/products/:id', overviewController.getProduct);
+
+app.get('/products/:id/styles', overviewController.getStyles);
+
 app.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}`);
 });
-
-
 
 module.export = app;

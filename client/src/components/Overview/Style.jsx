@@ -26,13 +26,15 @@ const StyledButton = styled.button`
 `;
 
 const Style = ({ style, onStyleChange, currentStyle }) => {
-  let mainColor = style.name.substring(style.name.indexOf(' ') + 1);
-  mainColor = mainColor.substring(0, mainColor.indexOf(' ')).toLowerCase();
+  // When using color schemes that include names for colors that dont exist as named colors in CSS
+  // let mainColor = style.name.substring(style.name.indexOf(' ') + 1);
+  // mainColor = mainColor.substring(0, mainColor.indexOf(' ')).toLowerCase();
+
+  const mainColor = style.name.substring(0, style.name.indexOf('&')).trim(' ').toLowerCase();
   let accentColor = style.name.substring(style.name.indexOf('&') + 1).trim(' ').toLowerCase();
   if (accentColor === 'white') {
-    accentColor = '#f5f5f5';
+    accentColor = '#f2f2f2';
   }
-
   const selected = style.name === currentStyle.name;
   // console.log(`${mainColor}<-main    accent->${accentColor}`);
   return (

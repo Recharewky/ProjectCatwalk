@@ -29,6 +29,11 @@ const OverviewContainer = styled.div`
   justify-self: center;
 `;
 
+const MainGridItem = styled.div`
+  grid-row: 1;
+  justify-self: center;
+`;
+
 class Overview extends React.Component {
   constructor(props) {
     super(props);
@@ -70,27 +75,29 @@ class Overview extends React.Component {
   render() {
     const { info, styles, currentStyle } = this.state;
     return (
-      <div>
+      <MainGridItem>
         {info && (
-          <div>
-            <OverviewContainer>
+          <OverviewContainer>
+            <ProductInfoContainer>
               <MainImage photos={currentStyle.photos} />
-              <div>
-                <ProductInfo info={info} />
-                <StyleOptions
-                  styles={styles}
-                  currentStyle={currentStyle}
-                  onStyleChange={this.onStyleChange}
-                />
-              </div>
-              <div>
-                <Selection currentStyle={currentStyle} />
-              </div>
-            </OverviewContainer>
-            <Description info={info} />
-          </div>
+              <ProductInfo
+                info={info}
+                originalPrice={currentStyle.original_price}
+                salePrice={currentStyle.sale_price}
+              />
+              <StyleOptions
+                styles={styles}
+                currentStyle={currentStyle}
+                onStyleChange={this.onStyleChange}
+              />
+              <Selection currentStyle={currentStyle} />
+            </ProductInfoContainer>
+            <DescriptionContainer>
+              <Description info={info} />
+            </DescriptionContainer>
+          </OverviewContainer>
         )}
-      </div>
+      </MainGridItem>
     );
   }
 }

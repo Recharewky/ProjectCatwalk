@@ -6,11 +6,6 @@ import RelatedProduct from './RelatedProducts/RelatedProducts.jsx';
 import QA from './QA/QA.jsx';
 import Reviews from './Reviews/Reviews.jsx';
 
-const Container = styled.div`
-  font-family: 'Roboto', sans-serif;
-  font-style: normal;
-`;
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -25,8 +20,8 @@ class App extends React.Component {
     return (
       <Container>
         <Overview id={id} />
-        {/* <RelatedProduct id={id} />
-        <Reviews id={id} /> */}
+        <RelatedProduct id={id} />
+        <Reviews id={id} />
         {/* <QA /> */}
       </Container>
 

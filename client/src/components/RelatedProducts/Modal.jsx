@@ -148,7 +148,7 @@ align-items: center;
 const ModalWrapper = styled.div`
 width: 70vw;
 height: 500px;
-left: -32vw;
+left: -36vw;
 top: -28vh;
 box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
 background: #fff;

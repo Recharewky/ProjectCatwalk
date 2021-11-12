@@ -32,8 +32,8 @@ app.get('/reviews', (req, res) => {
       })
       .catch((err) => {
           res.status(404).send(err);
-      })
-})
+      });
+});
 
 app.get('/reviews/meta', (req, res) => {
   var id = req.query.product_id;
@@ -48,4 +48,4 @@ app.get('/reviews/meta', (req, res) => {
 
 
 
-// module.export = app;
+//module.export = app;

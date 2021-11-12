@@ -56,29 +56,34 @@ class RatingBreakdown extends React.Component {
   }
 
   getAvg(data) {
-    var ratings = data.data.ratings;
-    var count = 0;
-    var total = 0;
-    var patsyAvg = Math.round(total / count * 10) / 10;
-    var countTrue = parseInt(data.data.recommended.true);
-    var countFalse = parseInt(data.data.recommended.false);
-    var breakdownArray = [];
+    let ratings = data.data.ratings;
+    let count = 0;
+    let total = 0;
 
-    for (var key in ratings) {
+    let countTrue = parseInt(data.data.recommended.true);
+    let countFalse = parseInt(data.data.recommended.false);
+    let breakdownArray = [];
+
+    for (let key in ratings) {
+      console.log('ratings[key]', count);
       count += parseInt(ratings[key]);
       total += (parseInt(key) * ratings[key]);
     }
+    console.log('wtf is wrong with this', Math.round(total / count * 10) / 10)
+    let patsyAvg = Math.round(total / count * 10) / 10;
 
-    for (var i = 1; i < 6; i++) {
+    for (let i = 1; i < 6; i++) {
       if (i in ratings) {
-        breakdownArray.push([i, ratings[i], Math.round(parseInt(ratings[i]) / count * 100)]);
+        breakdownArray.push([i, ratings[i], Math.round(parseInt(ratings[i]) / (count * 100))]);
       } else {
         breakdownArray.push([i, '0', 0]);
+        console.log('break it down array', breakdownArray);
       }
     }
     if (!Number.isNaN(patsyAvg)) {
       patsyAvg = patsyAvg.toString();
     } else {
+      console.log('I have the patsy before it turns!', patsyAvg)
       patsyAvg = 'No ratings yet';
     }
 
@@ -93,10 +98,11 @@ class RatingBreakdown extends React.Component {
 
   componentDidMount() {
     this.getMetaReviews(this.props.id, this.getAvg);
+
   }
 
   render() {
-    console.log(this)
+    console.log(this.props)
     return (
       <RatingBreakdown_div>
         <AvgContainer>

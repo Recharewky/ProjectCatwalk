@@ -14,19 +14,31 @@ const StylesContainer = styled.div`
   width: 66%;
 `;
 
+const StyleNameContainer = styled.legend`
+  font-style: italic;
+  font-weight: bolder;
+  font-size: large;
+`;
+
 const StyleOptions = ({ styles, currentStyle, onStyleChange }) => {
   const options = styles.results;
 
   return (
     <StylesContainer>
       <form>
-        <legend>
+        <StyleNameContainer>
           Style
           {'  >  '}
           {currentStyle.name}
-        </legend>
+        </StyleNameContainer>
         {/* Find a way to reflect the current style selected */}
-        {options.map((style) => <Style style={style} onStyleChange={onStyleChange} />)}
+        {options.map((style) => (
+          <Style
+            style={style}
+            onStyleChange={onStyleChange}
+            currentStyle={currentStyle}
+          />
+        ))}
       </form>
     </StylesContainer>
   );

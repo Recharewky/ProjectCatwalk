@@ -14,17 +14,31 @@ const StyledButton = styled.button`
   margin-right: 15px;
   margin-bottom: 8px;
   margin-top: 8px;
+  margin-left: 4px;
   background-image: linear-gradient(to bottom right, ${(props) => props.main} 16%, ${(props) => props.accent});
+  outline: ${(props) => props.selected};
+  outline-color: orange;
   z-index: 5;
 `;
 
-const Style = ({ style, onStyleChange }) => {
+const Style = ({ style, onStyleChange, currentStyle }) => {
   let mainColor = style.name.substring(style.name.indexOf(' ') + 1);
   mainColor = mainColor.substring(0, mainColor.indexOf(' ')).toLowerCase();
-  const accentColor = style.name.substring(style.name.indexOf('&') + 1).trim(' ').toLowerCase();
+  let accentColor = style.name.substring(style.name.indexOf('&') + 1).trim(' ').toLowerCase();
+  if (accentColor === 'white') {
+    accentColor = '#f5f5f5';
+  }
+
+  const selected = style.name === currentStyle.name;
   // console.log(`${mainColor}<-main    accent->${accentColor}`);
   return (
-    <StyledButton type="button" onClick={(e) => { onStyleChange(e, style); }} main={mainColor} accent={accentColor} />
+    <StyledButton
+      type="button"
+      onClick={(e) => { onStyleChange(e, style); }}
+      main={mainColor}
+      accent={accentColor}
+      selected={selected ? 'solid' : 'none'}
+    />
   );
 };
 

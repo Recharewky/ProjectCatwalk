@@ -12,6 +12,8 @@ const StylesContainer = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   width: 66%;
+  margin-left: 15px;
+  padding-left: 10px;
 `;
 
 const StyleNameContainer = styled.legend`

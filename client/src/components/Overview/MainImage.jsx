@@ -83,7 +83,7 @@ const MainImage = ({ photos }) => {
         key={i}
         src={photos[i].thumbnail_url}
         data-id={i}
-        selectedColor={i === currentPhoto ? 'cornflowerblue' : ''}
+        selectedColor={i === currentPhoto ? 'orange' : ''}
         onClick={(e) => {
           const id = Number(e.target.dataset.id);
           setPhoto(Number(id));

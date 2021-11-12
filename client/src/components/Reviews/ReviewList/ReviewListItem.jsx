@@ -127,7 +127,7 @@ const ReviewListItem = (props) => {
   var dateStr = date;
     var formattedDate = moment(dateStr).format('MMM DD, YYYY');
     if (recommend) {
-      var recommend = <Recommend_div> <span style={{color: 'green'}}>&#10003;</span>   I recommended this product</Recommend_div>;
+      var recommend = <Recommend_div> <span style={{color: 'blue'}}>&#10003;</span>   I recommended this product</Recommend_div>;
     }
     return (
       <ReviewListItem_Container>
@@ -155,9 +155,7 @@ const ReviewListItem = (props) => {
             />
           )}
         </Photo_div>
-
         {recommend}
-
         <Response_Container>
           <ResponseText_Container>
             <div>

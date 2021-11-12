@@ -7,6 +7,7 @@ import React from 'react';
 import $ from 'jquery';
 import styled from 'styled-components';
 import Modal from './Modal.jsx';
+import Stars from '../Reviews/Styles.jsx';
 
 class ARelatedProduct extends React.Component {
   constructor(props) {
@@ -233,8 +234,7 @@ class ARelatedProduct extends React.Component {
                 CAD
               </RelatedProductsDetails>
               <RelatedProductsDetails>
-                Rating:
-                {' '}
+                <Stars rating={`${isNaN(averageRating) ? 0 : Math.round(averageRating) * 20}%`} />
                 {averageRating}
               </RelatedProductsDetails>
             </div>

@@ -1,4 +1,17 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const Button = styled.button`
+  background: #edf5e1;
+  border-radius: 4px;
+  border: 2px solid #05386b;
+  color: #05386b;
+  &:hover {
+    cursor: pointer;
+  }
+  margin: 0 1em;
+  padding: 0.25em 1em;
+`
 
 
 class AddReview extends React.Component {
@@ -11,12 +24,7 @@ class AddReview extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  // handleChange(event) {
-  //   event.preventDefault();
-  //   this.setState({
-  //     [event.target.name]: event.target.value,
-  //   });
-  // }
+
   handleChange(e) {
     const { name } = e.target;
     const { value } = e.target;
@@ -136,9 +144,9 @@ class AddReview extends React.Component {
           />
 
           <br />
-          <input
+          <Button
             type="submit"
-          />
+          > Submit </Button>
         </form>
 
       </div>

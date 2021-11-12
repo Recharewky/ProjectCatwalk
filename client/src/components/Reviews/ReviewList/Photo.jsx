@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ModalImage, { Lightbox } from 'react-modal-image';
+import ModalImage , { Lightbox } from 'react-modal-image';
 import styled from 'styled-components';
 // import {Lightbox} from 'react-image-lightbox';
 // import 'react-image-lightbox/style.css';
@@ -12,13 +12,13 @@ background-color: transparent;
 }
 `;
 
-export default class Photo extends Component {
+export default class Photo extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      photoIndex: 0,
-      isOpen: false,
+      // photoIndex: 0,
+      // isOpen: false,
     };
   }
 

@@ -156,6 +156,8 @@ const RelatedProductList = ({ allRelatedProducts, currentProduct }) => {
       overflow-y: hidden;
       margin: 0px 4px 15px;
       padding: 80px 20px 80px 20px;
+      width: 83.5vw;
+      z-index: 5;
 
       &::-webkit-scrollbar {
         display: none;
@@ -167,6 +169,7 @@ const RelatedProductList = ({ allRelatedProducts, currentProduct }) => {
       max-width: 100%;
       overflow-y: auto;
       align-items: center;
+      justify-content: center;
     `;
 
   const listRef = useRef(null);
@@ -174,10 +177,11 @@ const RelatedProductList = ({ allRelatedProducts, currentProduct }) => {
 
   const scrollLeft = () => {
     if (listRef.current) {
-      console.log(listRef.current);
+      const visibleWidth = listRef.current.clientWidth;
+      const eachContainer = (visibleWidth - 4 - 20) / 4;
       listRef.current.scrollBy({
         top: 0,
-        left: 500,
+        left: eachContainer + 10,
         behavior: 'smooth',
       });
     }
@@ -185,11 +189,15 @@ const RelatedProductList = ({ allRelatedProducts, currentProduct }) => {
 
   const scrollRight = () => {
     if (listRef.current) {
+      const visibleWidth = listRef.current.clientWidth;
+      const eachContainer = (visibleWidth - 4 - 20) / 4;
       listRef.current.scrollBy({
         top: 0,
-        left: -500,
+        left: -eachContainer - 10,
         behavior: 'smooth',
       });
+      const myStorage = window.localStorage;
+      localStorage.setItem('myCat', 'Tom');
     }
   };
 

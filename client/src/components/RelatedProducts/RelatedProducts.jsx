@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import $ from 'jquery';
 import RelatedProductList from './RelatedProductList.jsx';
+import OutfitList from './OutfitList.jsx';
 
 function RelatedProducts(props) {
   const [allRelatedProducts, setDisplay] = useState([]);
@@ -36,10 +37,19 @@ function RelatedProducts(props) {
   }, [id, setDisplay]);
 
   return (
-    <div>
-      <h2 title="relatedProducts">Related Products:</h2>
-      <RelatedProductList allRelatedProducts={allRelatedProducts} currentProduct={currentProduct} />
-    </div>
+    <>
+      <div>
+        <h2 title="relatedProducts">Related Products:</h2>
+        <RelatedProductList
+          allRelatedProducts={allRelatedProducts}
+          currentProduct={currentProduct}
+        />
+      </div>
+      <div>
+        <h2 title="outfits">Saved Outfits:</h2>
+        <OutfitList currentProduct={id} />
+      </div>
+    </>
   );
 }
 

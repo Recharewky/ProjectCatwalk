@@ -11,21 +11,14 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-
       id: 61579,
     };
   }
 
   render() {
     const { id } = this.state;
-    const Container = styled.div`
-      font-family: 'Roboto', sans-serif;
-      font-style: normal;
-    `;
     return (
-
       <Container>
-        Hello World
         <Overview id={id} />
         {/* <RelatedProduct id={id} />
         <Reviews id={id} /> */}
@@ -35,5 +28,12 @@ class App extends React.Component {
     );
   }
 }
+
+const Container = styled.div`
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+`;
 
 export default App;

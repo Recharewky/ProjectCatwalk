@@ -11,13 +11,18 @@ import Description from './Description.jsx';
 import Selection from './Selection.jsx';
 import dummyData from '../../../../dummyData.js';
 
-const OverviewContainer = styled.div`
+const ProductInfoContainer = styled.div`
   display: grid;
   grid-template-columns: 670px 400px;
   grid-template-rows: 30px 280px 140px 80px;
   border: solid black;
   width: 100%;
   gap: 30px;
+`;
+
+const OverviewContainer = styled.div`
+  grid-row: 1;
+  justify-self: center;
 `;
 
 class Overview extends React.Component {
@@ -41,8 +46,8 @@ class Overview extends React.Component {
   render() {
     const { info, styles, currentStyle } = this.state;
     return (
-      <div>
-        <OverviewContainer>
+      <OverviewContainer>
+        <ProductInfoContainer>
           <MainImage photos={currentStyle.photos} />
           <ProductInfo info={info} />
           <StyleOptions
@@ -51,9 +56,9 @@ class Overview extends React.Component {
             onStyleChange={this.onStyleChange}
           />
           <Selection currentStyle={currentStyle} />
-        </OverviewContainer>
+        </ProductInfoContainer>
         <Description info={info} />
-      </div>
+      </OverviewContainer>
     );
   }
 }

@@ -19,6 +19,10 @@ const StyledButton = styled.button`
   outline: ${(props) => props.selected};
   outline-color: orange;
   z-index: 5;
+
+  &:hover {
+    background-image: linear-gradient(to bottom right, ${(props) => props.accent} 16%, ${(props) => props.main});
+  }
 `;
 
 const Style = ({ style, onStyleChange, currentStyle }) => {

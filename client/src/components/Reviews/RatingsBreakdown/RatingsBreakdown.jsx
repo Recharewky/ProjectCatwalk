@@ -69,21 +69,19 @@ class RatingBreakdown extends React.Component {
       count += parseInt(ratings[key]);
       total += (parseInt(key) * ratings[key]);
     }
-    console.log('wtf is wrong with this', Math.round(total / count * 10) / 10)
     let patsyAvg = Math.round(total / count * 10) / 10;
 
     for (let i = 1; i < 6; i++) {
       if (i in ratings) {
-        breakdownArray.push([i, ratings[i], Math.round(parseInt(ratings[i]) / (count * 100))]);
+        breakdownArray.push([i, ratings[i], Math.round(parseInt(ratings[i]) / count * 100)]);
       } else {
         breakdownArray.push([i, '0', 0]);
-        console.log('break it down array', breakdownArray);
+
       }
     }
     if (!Number.isNaN(patsyAvg)) {
       patsyAvg = patsyAvg.toString();
     } else {
-      console.log('I have the patsy before it turns!', patsyAvg)
       patsyAvg = 'No ratings yet';
     }
 

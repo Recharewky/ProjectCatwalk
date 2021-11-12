@@ -6,7 +6,7 @@ class Breakdown extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      breakdowns: props.breakdowns
+      breakdowns: this.props.breakdowns
     };
   }
 

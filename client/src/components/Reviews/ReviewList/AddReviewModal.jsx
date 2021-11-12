@@ -4,10 +4,13 @@ import AddReview from './AddReview.jsx';
 import styled from 'styled-components';
 
 const Button = styled.button`
-  background: transparent;
-  border-radius: 3px;
-  border: 2px solid palevioletred;
-  color: palevioletred;
+  background: #edf5e1;
+  border-radius: 4px;
+  border: 2px solid #05386b;
+  color: #05386b;
+  &:hover {
+    cursor: pointer;
+  }
   margin: 0 1em;
   padding: 0.25em 1em;
 `

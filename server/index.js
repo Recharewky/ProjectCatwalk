@@ -1,6 +1,7 @@
 const express = require('express');
 const axios = require('axios');
 const api = require('./routes/Reviews/api.js');
+const overviewController = require('./routes/Overview/controller.js');
 
 const app = express();
 const PORT = 3000;
@@ -31,10 +32,6 @@ app.post('/relatedProducts/postAProduct/:id', (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server listening on port: ${PORT}`);
-});
-
 //* **********Overview***************//
 
 //* **********Related***************//
@@ -52,5 +49,26 @@ app.get('/reviews', (req, res) => {
       res.status(404).send(err);
     });
 });
+
+app.get('/reviews/meta', (req, res) => {
+  const id = req.query.product_id;
+  api.getMetaReviews(id)
+
+    .then((data) => {
+      res.status(200).send(data.data);
+    })
+    .catch((err) => {
+      res.status(404).send(err);
+    });
+});
+
+app.get('/products/:id', overviewController.getProduct);
+
+app.get('/products/:id/styles', overviewController.getStyles);
+
+app.listen(PORT, () => {
+  console.log(`Server listening on port: ${PORT}`);
+});
+
 
 module.export = app;

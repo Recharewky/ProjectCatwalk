@@ -5,10 +5,13 @@ import styled from 'styled-components'
 import axios from 'axios';
 
 const Button = styled.button`
-  background: transparent;
-  border-radius: 3px;
-  border: 2px solid palevioletred;
-  color: palevioletred;
+  background: #edf5e1;
+  border-radius: 4px;
+  border: 2px solid #05386b;
+  color: #05386b;
+  &:hover {
+    cursor: pointer;
+  }
   margin: 0 1em;
   padding: 0.25em 1em;
 `
@@ -46,8 +49,8 @@ class ReviewList extends React.Component {
   }
 
   componentDidMount() {
-    console.log('component mounted');
-    this.getReviews(61575);
+    console.log('component mounted', this.props.id);
+    this.getReviews(this.props.id);
   }
 
   handleMoreReviews() {

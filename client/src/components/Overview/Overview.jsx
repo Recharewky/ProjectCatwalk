@@ -1,15 +1,13 @@
 /* eslint-disable import/extensions */
 /* eslint-disable react/prop-types */
 import React from 'react';
-
-// import axios from 'axios';
+import axios from 'axios';
 import styled from 'styled-components';
 import ProductInfo from './ProductInfo.jsx';
 import MainImage from './MainImage.jsx';
 import StyleOptions from './StyleOptions.jsx';
 import Description from './Description.jsx';
 import Selection from './Selection.jsx';
-import dummyData from '../../../../dummyData.js';
 
 const ProductInfoContainer = styled.div`
   display: grid;
@@ -35,12 +33,32 @@ class Overview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      info: dummyData.product,
-      styles: dummyData.styles,
-      currentStyle: dummyData.styles.results[0],
+      info: null,
+      styles: null,
+      currentStyle: null,
     };
 
     this.onStyleChange = this.onStyleChange.bind(this);
+  }
+
+  componentDidMount() {
+    const { id } = this.props;
+    axios.get(`/products/${id}`)
+      .then((response1) => {
+        const productResponse = response1.data;
+        axios.get(`/products/${id}/styles`)
+          .then((response2) => {
+            const styleResponse = response2.data;
+            this.setState({
+              info: productResponse,
+              styles: styleResponse,
+              currentStyle: styleResponse.results[0],
+            });
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      });
   }
 
   onStyleChange(e, style) {

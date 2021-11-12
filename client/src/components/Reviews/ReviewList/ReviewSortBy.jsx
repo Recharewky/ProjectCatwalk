@@ -1,14 +1,6 @@
 import React from 'react';
 
-class ReviewSortBy extends React.Component {
-  constructor(props) {
-    super();
-    this.state = {
-
-    }
-
-  }
-  render() {
+const ReviewSortBy = () => {
     return (
       <div>
         <h1>Sort By...</h1>
@@ -16,7 +8,7 @@ class ReviewSortBy extends React.Component {
       </div>
 
     );
-  }
 }
+
 
 export default ReviewSortBy;

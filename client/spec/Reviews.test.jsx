@@ -1,9 +1,10 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import {render, screen} from '@testing-library/react';
 import ReviewsTest from './ReviewsTest.jsx';
-import Reviews from '../src/components/Reviews/Reviews';
+import RatingsBreakdown from '../src/components/Reviews/RatingsBreakdown/RatingsBreakdown.jsx'
+import Reviews from '../src/components/Reviews/Reviews.jsx'
 
 it(' should render a form to the page', () => {
-  render(<Reviews />);
+  render(<Reviews/>)
   expect(screen.getByRole('form')).toBeInTheDocument();
-});
+})

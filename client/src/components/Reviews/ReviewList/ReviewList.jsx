@@ -1,20 +1,41 @@
 import React from 'react';
 import ReviewListItem from './ReviewListItem.jsx';
 import AddReviewModal from './AddReviewModal.jsx';
+import ReviewSortBy from './ReviewSortBy.jsx';
 import styled from 'styled-components'
 import axios from 'axios';
 
-const Button = styled.button`
-  background: #edf5e1;
-  border-radius: 4px;
-  border: 2px solid #05386b;
-  color: #05386b;
-  &:hover {
-    cursor: pointer;
-  }
-  margin: 0 1em;
+const Button_Group = styled.div`
+  display: flex;
   padding: 0.25em 1em;
 `
+
+const Button = styled.button`
+  border-radius: 8px;
+  border: 0px solid #05386b;
+  color: #f7f9fb;
+  background-color: #8fc1e3;
+  &:hover {
+    cursor: pointer;
+    background-color: #f7f9fb;
+    color: #8fc1e3;
+  }
+  object-fit: contain;
+  margin: 0 1em;
+  padding: 0.25em 1em;
+  border-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
+`;
+
+const ReviewListItems_Container = styled.div `
+height: 95%;
+gap: 10px;
+margin-top: 20px;
+
+::-webkit-scrollbar {
+  display: none;
+}
+margin-bottom: 40px
+`;
 
 class ReviewList extends React.Component {
   constructor() {
@@ -49,7 +70,7 @@ class ReviewList extends React.Component {
   }
 
   componentDidMount() {
-    console.log('component mounted', this.props.id);
+
     this.getReviews(this.props.id);
   }
 
@@ -66,17 +87,18 @@ class ReviewList extends React.Component {
 
   render() {
     return (
-      <div >
+      <ReviewListItems_Container >
         {this.state.display.map((review, index) =>
         <ReviewListItem review={review} key={index} />
         )}
-        <div>
-         <Button onClick={() => this.handleMoreReviews()}>
+        <Button_Group >
+
+         <Button onClick={ this.handleMoreReviews }>
             More Reviews
         </Button>
           <AddReviewModal />
-        </div>
-      </div>
+        </Button_Group >
+      </ReviewListItems_Container>
 
     );
   }

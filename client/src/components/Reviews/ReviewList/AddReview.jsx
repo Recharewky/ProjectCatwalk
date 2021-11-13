@@ -1,17 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
 
+
 const Button = styled.button`
-  background: #edf5e1;
-  border-radius: 4px;
-  border: 2px solid #05386b;
-  color: #05386b;
+  border-radius: 8px;
+  border: 0px solid #05386b;
+  color: #f7f9fb;
+  background-color: #8fc1e3;
   &:hover {
     cursor: pointer;
+    background-color: #f7f9fb;
+    color: #8fc1e3;
   }
+  object-fit: contain;
   margin: 0 1em;
   padding: 0.25em 1em;
-`
+  border-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
+`;
 
 
 class AddReview extends React.Component {

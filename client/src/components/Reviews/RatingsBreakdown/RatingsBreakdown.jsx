@@ -44,7 +44,7 @@ class RatingBreakdown extends React.Component {
   getMetaReviews(product_id, callback) {
     axios({
       method: 'get',
-      url: 'http://localhost:3000/reviews/meta',
+      url: '/reviews/meta',
       params: {
         product_id: product_id
       }

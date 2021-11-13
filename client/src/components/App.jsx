@@ -6,11 +6,6 @@ import RelatedProduct from './RelatedProducts/RelatedProducts.jsx';
 import QA from './QA/QA.jsx';
 import Reviews from './Reviews/Reviews.jsx';
 
-const Container = styled.div`
-  font-family: 'Roboto', sans-serif;
-  font-style: normal;
-`;
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -23,9 +18,7 @@ class App extends React.Component {
   render() {
     const { id } = this.state;
     return (
-
       <Container>
-        Hello World
         <Overview id={id} />
         <RelatedProduct id={id} />
         <Reviews id={id} />
@@ -35,5 +28,12 @@ class App extends React.Component {
     );
   }
 }
+
+const Container = styled.div`
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+`;
 
 export default App;

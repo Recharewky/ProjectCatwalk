@@ -15,8 +15,8 @@ const Background = styled.div`
 `;
 
 const ExpandedImage = styled.img`
-  height: 90%;
-  width: 90%;
+  height: 100vh;
+  width: 100vw;
   object-fit: cover;
   border-radius: 14px;
   border: 5px solid blue;

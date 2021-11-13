@@ -1,5 +1,13 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
+import styled from 'styled-components';
+
+const SelectContainer = styled.div`
+  border: solid black;
+  grid-column: 2;
+  grid-row: 4;
+  margin-left: 15px;
+`;
 
 const Selection = ({ currentStyle }) => {
   const [selectedSize, setSize] = useState('');
@@ -17,8 +25,9 @@ const Selection = ({ currentStyle }) => {
     sizeOptions.push(<option value={skus[i].size}>{skus[i].size}</option>);
     stockPerSizes.push(skus[i].quantity);
   }
+
   return (
-    <div>
+    <SelectContainer>
       <select onChange={(e) => {
         enableAmt(false);
         const amountList = [];
@@ -43,7 +52,7 @@ const Selection = ({ currentStyle }) => {
         {/* need to still add in BRD specs for add to cart button */}
         <button type="button" onClick={() => console.log(`Adding to cart size ${selectedSize} x${selectedAmt}`)}>Add to Cart</button>
       </div>
-    </div>
+    </SelectContainer>
   );
 };
 

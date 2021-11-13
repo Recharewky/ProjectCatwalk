@@ -12,10 +12,9 @@ import Selection from './Selection.jsx';
 const ProductInfoContainer = styled.div`
   display: grid;
   grid-template-columns: 670px 400px;
-  grid-template-rows: 30px 280px 140px 80px;
-  border: solid black;
+  grid-template-rows: 30px 220px 140px 80px 20px;
   width: 100%;
-  gap: 30px;
+  gap: 20px;
 `;
 
 const DescriptionContainer = styled.div`
@@ -101,5 +100,12 @@ class Overview extends React.Component {
     );
   }
 }
+
+// Colors to use
+// Green:      #687864
+// Dark blue   #31708E
+// Medium blue #5085A5
+// Light blue  #8FC1E3
+// Off white   #F7F9FB
 
 export default Overview;

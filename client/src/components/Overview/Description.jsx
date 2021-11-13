@@ -3,10 +3,13 @@ import React from 'react';
 import styled from 'styled-components';
 
 const DescContainer = styled.div`
-  border: solid black;
   display: grid;
-  grid-template-columns: 425px 200px;
-  column-gap: 30px;
+  grid-template-columns: 425px 400px;
+  column-gap: 110px;
+  margin-top: 25px;
+  margin-left: 60px;
+  color: #31708E;
+  text-transform: uppercase;
 `;
 
 const DescStyle = styled.div`
@@ -19,6 +22,9 @@ const FeatureStyle = styled.ul`
   margin: 0;
   grid-column: 2;
   border-left: solid;
+  border-color: #687864;
+  line-height: 1.25;
+  font-size: 16px;
 `;
 
 const StyledTitle = styled.h3`
@@ -31,28 +37,33 @@ const StyledDescriptionText = styled.div`
   font-style: oblique;
   text-align: justify;
   line-height: 1.5;
+  font-size: 16px;
+`;
+
+const Check = styled.i`
+  color: #8FC1E3;
 `;
 
 const Description = ({ info }) => {
-  const featureList = [];
-  let i = 0;
-  for (i = 0; i < info.features.length; i += 1) {
-    featureList.push(<li>{`${info.features[i].feature} | ${info.features[i].value}`}</li>);
-  }
+  // const featureList = [];
+  // let i = 0;
+  // for (i = 0; i < info.features.length; i += 1) {
+  //   featureList.push(<li>{`${info.features[i].feature} | ${info.features[i].value}`}</li>);
+  // }
 
   // when the fontawesome link is included make an icon for each feature
-  // const featureList = info.features.map((feature) => (
-  //   <li>
-  //     <i />
-  //     <span>{`  ${feature} | ${feature}`}</span>
-  //   </li>
-  // ));
+  const featureList = info.features.map((feature) => (
+    <li key={feature.feature}>
+      <Check className="far fa-check-circle" />
+      <span>{`  ${feature.feature}  |  ${feature.value}`}</span>
+    </li>
+  ));
 
   return (
     <DescContainer>
       <DescStyle>
         <StyledTitle>
-          Description
+          {info.slogan}
         </StyledTitle>
         <StyledDescriptionText>
           {info.description}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 import ReviewList from './ReviewList/ReviewList.jsx';
 import RatingsBreakdown from './RatingsBreakdown/RatingsBreakdown.jsx';
-import styled from 'styled-components';
 
 const HeadingContainer = styled.div`
   fontSize: '32px',
@@ -38,9 +38,9 @@ const RatingsBreakdownContainer = styled.div`
 `;
 
 const Reviews = (props) => {
-  const [starFilter, setFilter] = useState(0)
+  const [starFilter, setFilter] = useState(0);
   const starFilterer = (star) => setFilter(star);
-    return (
+  return (
       // <HeadingContainer> <div><h1>Ratings and Reviews</h1></div>  </HeadingContainer>
       <Container>
         <RatingsBreakdownContainer>

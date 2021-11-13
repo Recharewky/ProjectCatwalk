@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable guard-for-in */
 /* eslint-disable import/extensions */
@@ -6,6 +8,7 @@
 import React from 'react';
 import $ from 'jquery';
 import styled from 'styled-components';
+import Stars from '../Reviews/Styles.jsx';
 
 class AnOutfit extends React.Component {
   constructor(props) {
@@ -21,13 +24,14 @@ class AnOutfit extends React.Component {
 
   componentDidMount() {
     const { aProduct } = this.props;
+    const { updateMainButton } = this.props;
+    const { currentProduct } = this.props;
     $.ajax({
       method: 'POST',
       url: `/relatedProducts/postAProduct/${aProduct}`,
       contentType: 'application/json',
       data: JSON.stringify({ aProduct }),
       success: (success) => {
-        console.log(success);
         let average = 0;
         let total = 0;
         let counter = 0;
@@ -49,7 +53,7 @@ class AnOutfit extends React.Component {
           {
             name: success.name,
             price: Number(success.default_price),
-            photos: success.photos[0].photos[0].thumbnail_url,
+            photos: success.photos[0].photos[0].thumbnail_url === null ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png' : success.photos[0].photos[0].thumbnail_url,
             averageRating: average,
             category: success.category,
           },
@@ -66,6 +70,8 @@ class AnOutfit extends React.Component {
     const { averageRating } = this.state;
     const { photos } = this.state;
     const { category } = this.state;
+    const { aProduct } = this.props;
+    const { removeOutfit } = this.props;
 
     return (
       <>
@@ -74,32 +80,31 @@ class AnOutfit extends React.Component {
             <div className="img">
               <Img className="image" alt="" src={photos} />
             </div>
-            <RelatedProductsDetails>
-              <div className="category">
-                Category:
+            <div className="button">
+              <i
+                className="fas fa-times-circle"
+                onClick={(event) => removeOutfit(event, aProduct)}
+              />
+            </div>
+            <div className="sample">
+              <a className="categoryTitle">{category}</a>
+            </div>
+            <div className="details">
+              <RelatedProductsDetails>
+                <div className="name">
+                  {name}
+                </div>
+              </RelatedProductsDetails>
+              <RelatedProductsDetails>
+                {price}
                 {' '}
-                {category}
-              </div>
-            </RelatedProductsDetails>
-            <RelatedProductsDetails>
-              <div className="name">
-                Name:
-                {' '}
-                {name}
-              </div>
-            </RelatedProductsDetails>
-            <RelatedProductsDetails>
-              Price:
-              {' '}
-              {price}
-              {' '}
-              CAD
-            </RelatedProductsDetails>
-            <RelatedProductsDetails>
-              Rating:
-              {' '}
-              {averageRating}
-            </RelatedProductsDetails>
+                CAD
+              </RelatedProductsDetails>
+              <RelatedProductsDetails>
+                <Stars rating={`${Number.isNaN(averageRating) ? 0 : Math.round(averageRating) * 20}%`} />
+                {Number.isNaN(averageRating) ? averageRating : averageRating.slice(0, 4)}
+              </RelatedProductsDetails>
+            </div>
           </InnerContainer>
         </Container>
       </>
@@ -139,73 +144,62 @@ const Container = styled.div`
   `;
 
 const InnerContainer = styled.div`
-    border: #1c9bef 2px;
+    border: #1c9bef 0px;
     border-style: solid;
-    border-radius: 10px;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: #5085A5;
+    width: 18vw;
+    height: 95%;
+    border-radius: 5px;
     overflow: hidden;
     transition: 0.3s ease;
-    width: 18vw;
-    height: 100%;
     border-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-
-    & .content{
+    & .button {
+      position: relative;
+      width: 0px;
+      height: 0px;
+    }
+    & .fa-times-circle {
       position: absolute;
-      top:-250px;
-      left: 50%;
-      padding: 10px;
-      transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-      font-size: 20px;
-      color: navy;
-      white-space: nowrap;
-      overflow: hidden
-      }
-      & .content a{
-      font-size: 18px;
+      top: -288px;
+      left: 16vw;
+      color: #8FC1E3;
+      transform: scale(1.5);
+    }
+    & :active.fa-times-circle {
+      transform: scale(1.4);
+    }
+    & .categoryTitle {
+      font-weight: 400;
       display: block;
-      background-color: #1c9bef;
+      background-color: #31708E;
+      color: #F7F9FB;
       border: 0.1px solid;
       text-align: center;
       padding: 5px;
-      cursor: pointer
-      }
-      & .overlay{
-      opacity: 0;
+      cursor: pointer;
       position: relative;
-      display: none;
+      z-index: 2;
+      width: 50%;
+      top: -25px;
+      left: 4vw;
     }
-    & :hover img{
-      background-color: #fff;
-      transition: .3s ease;
-      opacity: .3
-    }
-    & :hover .overlay{
-      opacity: 1;
+    & .details {
+      display: flex;
+      flex-direction: column;
+      align-items: space-around;
       position: relative;
-      display: block;
-      }
-    & :hover .content {
-      padding: 30px;
-      margin-top: 30px;
-      margin-bottom: 30px;
+      top: -25px;
     }
-    & :hover .content a {
-      transition: .3s ease;
-      border-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    & .name {
+      font-weight: 900;
     }
-
-    & :active .content a {
-      transform: scale(0.9, 0.9);
-    }
-
     & :hover {
       box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-    }
-
-    & p {
-      display: block;
-      margin: 10px;
+      transform: translate(0, -20px);
+      transform: scale(1.05);
     }
   `;
-
 export default AnOutfit;

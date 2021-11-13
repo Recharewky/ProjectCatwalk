@@ -14,12 +14,9 @@ const Modal = (props) => {
   const { compareProdName } = props;
   const { currentProductFeatures } = props;
   const { currentProductName } = props;
-  console.log(props);
 
   const compareFunc = () => {
     const { compareProdFeatures } = props;
-    console.log('currentProductFeatures', currentProductFeatures);
-    console.log('compareProdFeatures', compareProdFeatures);
     const setFeatures = {};
     const finalCompare = [];
     for (let i = 0; i < currentProductFeatures.length; i++) {
@@ -43,8 +40,6 @@ const Modal = (props) => {
       }
     }
 
-    console.log('SetFeatures', setFeatures);
-
     for (const key in setFeatures) {
       // console.log(key);
       // console.log(setFeatures);
@@ -61,7 +56,6 @@ const Modal = (props) => {
         finalCompare.push([false, `${key}: ${arr[1]}`, true]);
       }
     }
-    console.log('final compare', finalCompare);
     return finalCompare;
   };
 
@@ -148,7 +142,7 @@ align-items: center;
 const ModalWrapper = styled.div`
 width: 70vw;
 height: 500px;
-left: -36vw;
+left: -35.5vw;
 top: -28vh;
 box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
 background: #fff;

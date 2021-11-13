@@ -32,7 +32,6 @@ class ARelatedProduct extends React.Component {
       contentType: 'application/json',
       data: JSON.stringify({ aProduct }),
       success: (success) => {
-        console.log(success);
         let average = 0;
         let total = 0;
         let counter = 0;
@@ -55,7 +54,7 @@ class ARelatedProduct extends React.Component {
             name: success.name,
             price: Number(success.default_price),
             features: success.features,
-            photos: success.photos[0].photos[0].thumbnail_url,
+            photos: success.photos[0].photos[0].thumbnail_url === null ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png' : success.photos[0].photos[0].thumbnail_url,
             averageRating: average,
             category: success.category,
           },
@@ -116,19 +115,24 @@ class ARelatedProduct extends React.Component {
   `;
 
     const InnerContainer = styled.div`
-    border: #1c9bef 2px;
+    border: #1c9bef 0px;
     border-style: solid;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: #5085A5;
     width: 18vw;
     height: 95%;
-    border-radius: 10px;
+    border-radius: 5px;
     overflow: hidden;
     transition: 0.3s ease;
     border-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
     & .categoryTitle {
-      font-size: 18px;
+      font-weight: 400;
       display: block;
-      background-color: #1c9bef;
+      background-color: #31708E;
+      color: #F7F9FB;
       border: 0.1px solid;
       text-align: center;
       padding: 5px;
@@ -146,6 +150,9 @@ class ARelatedProduct extends React.Component {
       position: relative;
       top: -25px;
     }
+    & .name {
+      font-weight: 900;
+    }
     & .content{
       position: absolute;
       top:-300px;
@@ -153,8 +160,7 @@ class ARelatedProduct extends React.Component {
       padding: 10px;
       transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
-      font-size: 20px;
-      color: navy;
+      font-weight: 900;
       white-space: nowrap;
       overflow: hidden
       }
@@ -175,13 +181,15 @@ class ARelatedProduct extends React.Component {
       }
     & :hover .content {
       padding: 30px;
+      font-weight: 800;
       margin-top: 30px;
       margin-bottom: 30px;
     }
     & :hover .sample {
       transition: all .3s ease-in-out;
       transition-delay: 0.1s;
-      transform: translate(0, -75px);
+      transform: translate(0, -65px);
+      width: 100%;
     }
 
     & .categoryTitle:after {
@@ -203,7 +211,7 @@ class ARelatedProduct extends React.Component {
 
     & :hover {
       box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-      transform: translate(0, -10px);
+      transform: translate(0, -20px);
       transform: scale(1.05);
     }
   `;
@@ -221,28 +229,22 @@ class ARelatedProduct extends React.Component {
             <div className="details">
               <RelatedProductsDetails>
                 <div className="name">
-                  Name:
-                  {' '}
                   {name}
                 </div>
               </RelatedProductsDetails>
               <RelatedProductsDetails>
-                Price:
-                {' '}
                 {price}
                 {' '}
                 CAD
               </RelatedProductsDetails>
               <RelatedProductsDetails>
                 <Stars rating={`${isNaN(averageRating) ? 0 : Math.round(averageRating) * 20}%`} />
-                {averageRating}
+                {isNaN(averageRating) ? averageRating : averageRating.slice(0, 4)}
               </RelatedProductsDetails>
             </div>
             <div className="overlay">
               <div className="content">
                 Love this product?
-                {' '}
-                {/* <a onClick={(event) => this.openModal(event)}>Compare</a> */}
               </div>
             </div>
           </InnerContainer>

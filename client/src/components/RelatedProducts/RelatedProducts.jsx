@@ -2,6 +2,7 @@
 /* eslint-disable import/extensions */
 import React, { useState, useEffect } from 'react';
 import $ from 'jquery';
+import styled from 'styled-components';
 import RelatedProductList from './RelatedProductList.jsx';
 import OutfitList from './OutfitList.jsx';
 
@@ -39,54 +40,31 @@ function RelatedProducts(props) {
   return (
     <>
       <div>
-        <h2 title="relatedProducts">Related Products:</h2>
+        <Title>
+          <div title="relatedProducts">You may also like:</div>
+        </Title>
         <RelatedProductList
           allRelatedProducts={allRelatedProducts}
           currentProduct={currentProduct}
         />
       </div>
       <div>
-        <h2 title="outfits">Saved Outfits:</h2>
+        <Title>
+          <div title="outfits">OOTD</div>
+        </Title>
         <OutfitList currentProduct={id} />
       </div>
     </>
   );
 }
-
-// class RelatedProducts extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       allRelatedProducts: [61579, 61580],
-//     };
-//   }
-
-//   componentDidMount() {
-//     const { id } = this.props;
-//     $.ajax({
-//       type: 'POST',
-//       url: `/relatedProducts/post/${id}`,
-//       contentType: 'application/json',
-//       data: JSON.stringify({ id }),
-//       success: (success) => {
-//         const successSet = new Set(success);
-//         const arr = Array.from(successSet); // duplicates
-//         this.setState(
-//           { allRelatedProducts: arr },
-//         );
-//       },
-//       error: (err) => console.log('error', err),
-//     });
-//   }
-
-//   render() {
-//     const { allRelatedProducts } = this.state;
-//     return (
-//       <div>
-//         <RelatedProductList allRelatedProducts={allRelatedProducts} />
-//       </div>
-//     );
-//   }
-// }
-
+const Title = styled.div`
+  font-family: 'Open Sans', sans-serif;
+  text-transform: uppercase;
+  font-size: larger;
+  font-weight: 800;
+  color: #5085A5;
+  margin: 30px 0px -30px 1em;
+  padding-left: 7.8vw;
+  padding-right: 1em;
+`;
 export default RelatedProducts;

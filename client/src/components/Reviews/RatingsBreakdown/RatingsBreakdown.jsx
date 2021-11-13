@@ -65,7 +65,7 @@ class RatingBreakdown extends React.Component {
     let breakdownArray = [];
 
     for (let key in ratings) {
-      console.log('ratings[key]', count);
+
       count += parseInt(ratings[key]);
       total += (parseInt(key) * ratings[key]);
     }
@@ -100,7 +100,7 @@ class RatingBreakdown extends React.Component {
   }
 
   render() {
-    console.log(this.props)
+
     return (
       <RatingBreakdown_div>
         <AvgContainer>

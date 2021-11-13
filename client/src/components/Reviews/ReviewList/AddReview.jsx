@@ -1,18 +1,33 @@
 import React from 'react';
 import styled from 'styled-components';
 
+
 const Button = styled.button`
-  background: #edf5e1;
-  border-radius: 4px;
-  border: 2px solid #05386b;
-  color: #05386b;
+  border-radius: 8px;
+  border: 0px solid #05386b;
+  color: #f7f9fb;
+  background-color: #8fc1e3;
   &:hover {
     cursor: pointer;
+    background-color: #f7f9fb;
+    color: #8fc1e3;
   }
+  object-fit: contain;
   margin: 0 1em;
   padding: 0.25em 1em;
-`
-
+  border-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
+`;
+const Questions_Container = styled.div`
+  border-radius: 8px;
+  border: 0px solid #05386b;
+  color: #f7f9fb;
+  background-color: #8fc1e3;
+  width: 500px
+  object-fit: contain;
+  margin: 3 2em;
+  padding: 0.25em 1em;
+  border-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
+`;
 
 class AddReview extends React.Component {
   constructor() {
@@ -66,6 +81,7 @@ class AddReview extends React.Component {
     return (
       <div>
         <h1> Write a New Review!</h1>
+        <Questions_Container>
         <form onSubmit={this.handleReviewSubmit}>
           <label htmlFor="overallRating">
             Over-All Rating:
@@ -148,6 +164,7 @@ class AddReview extends React.Component {
             type="submit"
           > Submit </Button>
         </form>
+        </Questions_Container>
 
       </div>
     )

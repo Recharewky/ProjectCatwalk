@@ -3,7 +3,7 @@
 
 import React, { useRef } from 'react';
 import styled from 'styled-components';
-import ARelatedProduct from './aRelatedProduct';
+import ARelatedProduct from './aRelatedProduct.jsx';
 // import './style.scss';
 // import PropTypes from 'prop-types';
 

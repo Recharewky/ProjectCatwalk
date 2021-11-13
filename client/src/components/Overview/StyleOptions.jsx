@@ -43,6 +43,7 @@ const StyleOptions = ({ styles, currentStyle, onStyleChange }) => {
         </StyleNameContainer>
         {options.map((style) => (
           <Style
+            key={style.name}
             style={style}
             onStyleChange={onStyleChange}
             currentStyle={currentStyle}

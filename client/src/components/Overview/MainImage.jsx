@@ -4,13 +4,6 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import ExpandedView from './ExpandedView.jsx';
 
-// Colors to use
-// Green:      #687864
-// Dark blue   #31708E
-// Medium blue #5085A5
-// Light blue  #8FC1E3
-// Off white   #F7F9FB
-
 const Main = styled.img`
   height: 450px;
   width: 600px;
@@ -162,26 +155,23 @@ const MainImage = ({ photos }) => {
 
   return (
     <MainContainer>
-      {!showExpanded ? (
-        <>
-          <Gallery>
-            {Thumbnails}
-          </Gallery>
-          <Main src={photos[currentPhoto].url} alt="hi-res product" onClick={setExpanded} />
-          {leftArrowVisible
-            && (
-            <LeftArrow type="button" onClick={onLeftArrowClick}>
-              <i className="fas fa-chevron-left fa-3x" />
-            </LeftArrow>
-            )}
-          {rightArrowVisible
-            && (
-            <RightArrow type="button" onClick={onRightArrowClick}>
-              <i className="fas fa-chevron-right fa-3x" />
-            </RightArrow>
-            )}
-        </>
-      ) : (
+      <Gallery>
+        {Thumbnails}
+      </Gallery>
+      <Main src={photos[currentPhoto].url} alt="hi-res product" onClick={setExpanded} />
+      {leftArrowVisible
+        && (
+        <LeftArrow type="button" onClick={onLeftArrowClick}>
+          <i className="fas fa-chevron-left fa-3x" />
+        </LeftArrow>
+        )}
+      {rightArrowVisible
+        && (
+        <RightArrow type="button" onClick={onRightArrowClick}>
+          <i className="fas fa-chevron-right fa-3x" />
+        </RightArrow>
+        )}
+      {showExpanded && (
         <ExpandedView
           showExpanded={showExpanded}
           setExpanded={setExpanded}

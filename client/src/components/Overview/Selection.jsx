@@ -70,29 +70,31 @@ const SizeText = styled.div`
   grid-row: 1;
   grid-column: 1;
   font-size: 14px;
-`;
+  color: #5085A5;
+  `;
 
 const AmtText = styled.div`
   grid-row: 1;
   grid-column: 2;
   font-size: 14px;
+  color: #5085A5;
 `;
 
 const Selection = ({ currentStyle }) => {
   const [selectedSize, setSize] = useState('');
-  const [selectedAmt, setAmt] = useState(0);
+  const [selectedAmt, setAmt] = useState(1);
   const [amtEnabled, enableAmt] = useState(true);
   const [cartEnabled, enableCart] = useState(false);
 
-  const amtOptions = [<option value="amt" selected disabled>-</option>];
+  const amtOptions = [<option key="amt" value="amt" disabled>-</option>];
   const [availableAmt, setAmtList] = useState(amtOptions);
 
-  const sizeOptions = [<option value="size" selected disabled>Select Size</option>];
+  const sizeOptions = [<option key="size" value="size" disabled>Select Size</option>];
   const stockPerSizes = [];
   const skus = Object.values(currentStyle.skus);
   let i;
   for (i = 0; i < skus.length; i += 1) {
-    sizeOptions.push(<option value={skus[i].size}>{skus[i].size}</option>);
+    sizeOptions.push(<option key={i} value={skus[i].size}>{skus[i].size}</option>);
     stockPerSizes.push(skus[i].quantity);
   }
 
@@ -106,7 +108,7 @@ const Selection = ({ currentStyle }) => {
       max = 15;
     }
     for (let j = 1; j <= max; j += 1) {
-      amountList.push(<option value={j}>{j}</option>);
+      amountList.push(<option key={j} value={j}>{j}</option>);
     }
     setSize(e.target.value);
     setAmtList(amountList);
@@ -115,11 +117,11 @@ const Selection = ({ currentStyle }) => {
   return (
     <SelectContainer>
       <SizeText>Size</SizeText>
-      <SizeStyle onChange={(e) => changeSize(e)}>
+      <SizeStyle defaultValue="size" onChange={(e) => changeSize(e)}>
         {sizeOptions}
       </SizeStyle>
       <AmtText>Quantity</AmtText>
-      <AmountStyle disabled={amtEnabled} onChange={(e) => setAmt(e.target.value)}>
+      <AmountStyle disabled={amtEnabled} defaultValue="amt" onChange={(e) => setAmt(e.target.value)}>
         {availableAmt}
       </AmountStyle>
       {cartEnabled && (

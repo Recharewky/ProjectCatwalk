@@ -40,11 +40,16 @@ const Style = ({ style, onStyleChange, currentStyle }) => {
   // When using color schemes that include names for colors that dont exist as named colors in CSS
   // let mainColor = style.name.substring(style.name.indexOf(' ') + 1);
   // mainColor = mainColor.substring(0, mainColor.indexOf(' ')).toLowerCase();
-
-  const mainColor = style.name.substring(0, style.name.indexOf('&')).trim(' ').toLowerCase();
-  let accentColor = style.name.substring(style.name.indexOf('&') + 1).trim(' ').toLowerCase();
-  if (accentColor === 'white') {
-    accentColor = '#E0E0E0';
+  let mainColor = '';
+  let accentColor = '';
+  if (style.name.indexOf('&') > -1) {
+    mainColor = style.name.substring(0, style.name.indexOf('&')).trim(' ').toLowerCase();
+    accentColor = style.name.substring(style.name.indexOf('&') + 1).trim(' ').toLowerCase();
+    if (accentColor === 'white') {
+      accentColor = '#E0E0E0';
+    }
+  } else {
+    mainColor = style.name.trim(' ').toLowerCase();
   }
   const selected = style.name === currentStyle.name;
   // console.log(`${mainColor}<-main    accent->${accentColor}`);

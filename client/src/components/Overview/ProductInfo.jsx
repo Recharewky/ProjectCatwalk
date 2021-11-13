@@ -4,17 +4,6 @@ import React from 'react';
 import styled from 'styled-components';
 import Star from '../Reviews/Styles.jsx';
 
-//  display: grid;
-// grid-template-rows: 30px 50px 80px 25px 50px;
-// grid-template-columns: 150px 250px;
-
-// Colors to use
-// Green:      #687864
-// Dark blue   #31708E
-// Medium blue #5085A5
-// Light blue  #8FC1E3
-// Off white   #F7F9FB
-
 const Info = styled.div`
   grid-column: 2;
   grid-row: 2;
@@ -49,7 +38,7 @@ const Category = styled.div`
   padding-right: 20px;
   background-color: #31708E;
   color: #F7F9FB;
-  border-radius: 25px;
+  border-radius: 5px;
   cursor: pointer;
   box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
 
@@ -63,13 +52,14 @@ const Category = styled.div`
 const ProductName = styled.div`
   font-size: 44px;
   font-weight: bolder;
+  color: #31708E;
   grid-row: 3;
   grid-column: 1 / span2;
 `;
 
 const Price = styled.div`
   font-size: 22px;
-  color: #31708E;
+  color: #5085A5;
   grid-row: 5;
   grid-column: 1 / span2;
 `;
@@ -112,7 +102,7 @@ const ProductInfo = ({ info, originalPrice, salePrice }) => {
         <ProductName>
           {info.name}
         </ProductName>
-        <Price onSale={salePrice !== null}>
+        <Price>
           {salePrice && (
             <PercentageContainer>{`On Sale! ~${percentage}% off!`}</PercentageContainer>
           )}

@@ -2,13 +2,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-// Colors to use
-// Green:      #687864
-// Dark blue   #31708E
-// Medium blue #5085A5
-// Light blue  #8FC1E3
-// Off white   #F7F9FB
-
 const DescContainer = styled.div`
   display: grid;
   grid-template-columns: 425px 350px;
@@ -44,11 +37,6 @@ const StyledDescriptionText = styled.div`
   line-height: 1.5;
 `;
 
-const Slogan = styled.div`
-  font-style: oblique;
-  color: #5085A5;
-`;
-
 const Check = styled.i`
   color: #8FC1E3;
 `;
@@ -62,7 +50,7 @@ const Description = ({ info }) => {
 
   // when the fontawesome link is included make an icon for each feature
   const featureList = info.features.map((feature) => (
-    <li>
+    <li key={feature.feature}>
       <Check className="far fa-check-circle" />
       <span>{`  ${feature.feature}  |  ${feature.value}`}</span>
     </li>

@@ -7,12 +7,11 @@ const Stars = styled.div`
   line-height: 1;
   &::before {
     content: "★★★★★";
-    letter-spacing: 3px;
-    background: linear-gradient(90deg, #ffe789 ${props => props.rating}, #c4c4c4 ${props => props.rating});
+    letter-spacing: 1px;
+    background: linear-gradient(90deg, #31708E ${(props) => props.rating}, #8FC1E3 ${(props) => props.rating});
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 `;
-
 
 export default Stars;

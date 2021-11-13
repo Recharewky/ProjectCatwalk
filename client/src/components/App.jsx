@@ -13,6 +13,15 @@ class App extends React.Component {
     this.state = {
       id: 61579,
     };
+
+    this.changeProduct = this.changeProduct.bind(this);
+  }
+
+  changeProduct(event, productID) {
+    event.preventDefault();
+    this.setState(
+      { id: productID },
+    );
   }
 
   render() {
@@ -20,8 +29,8 @@ class App extends React.Component {
     return (
       <Container>
         <Overview id={id} />
-        {/* <RelatedProduct id={id} />
-        <Reviews id={id} /> */}
+        <RelatedProduct id={id} changeProduct={this.changeProduct} />
+        <Reviews id={id} />
         {/* <QA /> */}
       </Container>
 
@@ -38,3 +47,5 @@ const Container = styled.div`
 `;
 
 export default App;
+// display: grid;
+// grid-template-rows: 1fr 1fr 1fr;

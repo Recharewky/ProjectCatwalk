@@ -7,7 +7,9 @@ import ARelatedProduct from './aRelatedProduct.jsx';
 // import './style.scss';
 // import PropTypes from 'prop-types';
 
-const RelatedProductList = ({ allRelatedProducts, currentProduct }) => {
+const RelatedProductList = ({
+  allRelatedProducts, currentProductID, changeProduct, currentProduct,
+}) => {
   const ArrowLeft = styled.div`
   cursor: pointer;
   height: 40px;
@@ -155,7 +157,7 @@ const RelatedProductList = ({ allRelatedProducts, currentProduct }) => {
       display: flex;
       overflow-y: hidden;
       margin: 0px 4px 15px;
-      padding: 80px 20px 80px 20px;
+      padding: 20px 20px 80px 20px;
       width: 83.5vw;
       z-index: 5;
 
@@ -173,15 +175,15 @@ const RelatedProductList = ({ allRelatedProducts, currentProduct }) => {
     `;
 
   const listRef = useRef(null);
-  const showIcons = allRelatedProducts.length > 3;
+  const showIcons = allRelatedProducts.length > 4;
 
   const scrollLeft = () => {
     if (listRef.current) {
       const visibleWidth = listRef.current.clientWidth;
-      const eachContainer = (visibleWidth - 4 - 20) / 4;
+      const eachContainer = (visibleWidth - 25) / 4;
       listRef.current.scrollBy({
         top: 0,
-        left: eachContainer + 10,
+        left: eachContainer,
         behavior: 'smooth',
       });
     }
@@ -190,14 +192,12 @@ const RelatedProductList = ({ allRelatedProducts, currentProduct }) => {
   const scrollRight = () => {
     if (listRef.current) {
       const visibleWidth = listRef.current.clientWidth;
-      const eachContainer = (visibleWidth - 4 - 20) / 4;
+      const eachContainer = (visibleWidth - 25) / 4;
       listRef.current.scrollBy({
         top: 0,
-        left: -eachContainer - 10,
+        left: -eachContainer,
         behavior: 'smooth',
       });
-      const myStorage = window.localStorage;
-      localStorage.setItem('myCat', 'Tom');
     }
   };
 
@@ -214,7 +214,9 @@ const RelatedProductList = ({ allRelatedProducts, currentProduct }) => {
           <ARelatedProduct
             key={aProduct}
             aProduct={aProduct}
+            currentProductID={currentProductID}
             currentProduct={currentProduct}
+            changeProduct={changeProduct}
           />
         ))}
       </Container>
@@ -227,74 +229,5 @@ const RelatedProductList = ({ allRelatedProducts, currentProduct }) => {
     </StyledContainer>
   );
 };
-
-// class RelatedProductList extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//     };
-//   }
-
-//   render() {
-//     const { allRelatedProducts } = this.props;
-//     const Container = styled.div`
-//       display: flex;
-//       overflow-y: hidden;
-//       margin: 0px 4px 15px;
-
-//       &::-webkit-scrollbar {
-//         display: none;
-//       }
-//     `;
-
-//     const StyledContainer = styled.div`
-//       display: flex;
-//       max-width: 80rem;
-//       overflow-y: auto;
-//     `;
-
-//     // const listRef = useRef(null);
-//     // const showIcons = allRelatedProducts.length > 2;
-
-//     // const scrollLeft = () => {
-//     //   if (listRef.current) {
-//     //     listRef.current.scrollBy({
-//     //       top: 0,
-//     //       left: 500,
-//     //       behavior: 'smooth',
-//     //     });
-//     //   }
-//     // };
-
-//     // const scrollRight = () => {
-//     //   if (listRef.current) {
-//     //     listRef.current.scrollBy({
-//     //       top: 0,
-//     //       left: -500,
-//     //       behavior: 'smooth',
-//     //     });
-//     //   }
-//     // };
-
-//     return (
-//       <StyledContainer>
-//         <Icon
-//           className="icon-class"
-//           name="caret left"
-//           size="huge"
-//         />
-//         <Container>
-//           {allRelatedProducts.map((aProduct) => (
-//             <ARelatedProduct
-//               key={aProduct}
-//               aProduct={aProduct}
-//             />
-//           ))}
-//         </Container>
-//         <h2>TEST</h2>
-//       </StyledContainer>
-//     );
-//   }
-// }
 
 export default RelatedProductList;

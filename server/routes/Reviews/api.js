@@ -19,17 +19,16 @@ const getAllRelatedProducts = function (productID, callback) {
     });
 };
 
-  const getMetaReviews = (id) =>
-  axios({
-    method: 'get',
-    url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/meta',
-    params: {
-      product_id: id
-    },
-    headers: {
-      'Authorization': TOKEN.TOKEN
-    }
-  });
+const getMetaReviews = (id) => axios({
+  method: 'get',
+  url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/meta',
+  params: {
+    product_id: id,
+  },
+  headers: {
+    Authorization: TOKEN.TOKEN,
+  },
+});
 
 const getAProduct = function (productID, callback) {
   const productObj = {};
@@ -39,6 +38,7 @@ const getAProduct = function (productID, callback) {
     headers: { Authorization: `${TOKEN.TOKEN}` },
   })
     .then((response) => {
+      productObj.id = response.data.id;
       productObj.name = response.data.name;
       productObj.default_price = Number(response.data.default_price);
       productObj.description = response.data.description;

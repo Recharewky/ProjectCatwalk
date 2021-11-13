@@ -67,14 +67,6 @@ const ProductName = styled.div`
   grid-column: 1 / span2;
 `;
 
-const Slogan = styled.div`
-  font-size: 12px;
-  font-style: oblique;
-  color: #5085A5;
-  grid-row: 4;
-  grid-column: 1 / span2;
-`;
-
 const Price = styled.div`
   font-size: 22px;
   color: #31708E;
@@ -120,9 +112,6 @@ const ProductInfo = ({ info, originalPrice, salePrice }) => {
         <ProductName>
           {info.name}
         </ProductName>
-        <Slogan>
-          {info.slogan}
-        </Slogan>
         <Price onSale={salePrice !== null}>
           {salePrice && (
             <PercentageContainer>{`On Sale! ~${percentage}% off!`}</PercentageContainer>

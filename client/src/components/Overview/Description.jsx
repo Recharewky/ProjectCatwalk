@@ -44,6 +44,11 @@ const StyledDescriptionText = styled.div`
   line-height: 1.5;
 `;
 
+const Slogan = styled.div`
+  font-style: oblique;
+  color: #5085A5;
+`;
+
 const Check = styled.i`
   color: #8FC1E3;
 `;
@@ -67,7 +72,7 @@ const Description = ({ info }) => {
     <DescContainer>
       <DescStyle>
         <StyledTitle>
-          Description
+          {info.slogan}
         </StyledTitle>
         <StyledDescriptionText>
           {info.description}

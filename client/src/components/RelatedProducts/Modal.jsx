@@ -14,6 +14,7 @@ const Modal = (props) => {
   const { compareProdName } = props;
   const { currentProductFeatures } = props;
   const { currentProductName } = props;
+  const { changeProduct, currentProductID, compareProductID } = props;
 
   const compareFunc = () => {
     const { compareProdFeatures } = props;
@@ -94,7 +95,7 @@ const Modal = (props) => {
                       </div>
                     )
                     : <div> No </div>))}
-                <button>Read More</button>
+                <button onClick={(event) => changeProduct(event, currentProductID)}>Read More</button>
               </ModalContent>
               <ModalContent>
                 <h1>Description</h1>
@@ -110,7 +111,7 @@ const Modal = (props) => {
                   (anItem[2]
                     ? <div><i className="fas fa-check" /></div>
                     : <div> No </div>))}
-                <button>Read More</button>
+                <button onClick={(event) => changeProduct(event, compareProductID)}>Read More</button>
               </ModalContent>
               <CloseModalButton
                 aria-label="Close modal"

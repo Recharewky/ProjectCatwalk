@@ -13,6 +13,7 @@ class ARelatedProduct extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: 0,
       name: '',
       price: 0,
       features: [],
@@ -52,6 +53,7 @@ class ARelatedProduct extends React.Component {
         this.setState(
           {
             name: success.name,
+            id: success.id,
             price: Number(success.default_price),
             features: success.features,
             photos: success.photos[0].photos[0].thumbnail_url === null ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png' : success.photos[0].photos[0].thumbnail_url,
@@ -79,7 +81,10 @@ class ARelatedProduct extends React.Component {
     const { category } = this.state;
     const { showModal } = this.state;
     const { features } = this.state;
-    const { currentProduct } = this.props;
+    const { id } = this.state;
+    const {
+      currentProduct, changeProduct, aProduct,
+    } = this.props;
 
     const RelatedProductsDetails = styled.div`
     font-size: 1em;
@@ -256,6 +261,9 @@ class ARelatedProduct extends React.Component {
           compareProdFeatures={features}
           currentProductName={currentProduct.name}
           currentProductFeatures={currentProduct.features}
+          changeProduct={changeProduct}
+          currentProductID={id}
+          compareProductID={aProduct}
         />
       </>
     );

@@ -13,14 +13,23 @@ class App extends React.Component {
     this.state = {
       id: 61579,
     };
+
+    this.changeProduct = this.changeProduct.bind(this);
+  }
+
+  changeProduct(event, productID) {
+    event.preventDefault();
+    this.setState(
+      { id: productID },
+    );
   }
 
   render() {
     const { id } = this.state;
     return (
       <Container>
-        {/* <Overview id={id} /> */}
-        <RelatedProduct id={id} />
+        <Overview id={id} />
+        <RelatedProduct id={id} changeProduct={this.changeProduct} />
         <Reviews id={id} />
         {/* <QA /> */}
       </Container>

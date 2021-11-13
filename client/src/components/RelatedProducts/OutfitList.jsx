@@ -3,7 +3,7 @@
 /* eslint-disable react/prop-types */
 
 import React, { useState, useRef, useEffect } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import $ from 'jquery';
 import AnOutfit from './anOutfit.jsx';
 import Stars from '../Reviews/Styles.jsx';
@@ -53,7 +53,7 @@ const OutfitList = ({ currentProduct }) => {
     if (listRef.current) {
       const visibleWidth = listRef.current.clientWidth;
       console.log(visibleWidth);
-      const eachContainer = ((visibleWidth)) / 4;
+      const eachContainer = ((visibleWidth - 25)) / 4;
       listRef.current.scrollBy({
         top: 0,
         left: eachContainer,
@@ -66,7 +66,7 @@ const OutfitList = ({ currentProduct }) => {
     if (listRef.current) {
       const visibleWidth = listRef.current.clientWidth;
       console.log(visibleWidth);
-      const eachContainer = ((visibleWidth)) / 4;
+      const eachContainer = ((visibleWidth - 25)) / 4;
       listRef.current.scrollBy({
         top: 0,
         left: -eachContainer,
@@ -405,6 +405,13 @@ const Img = styled.img`
     object-fit: cover;
   `;
 
+const slideIn = keyframes`
+    0%{ margin-left: 100%; }
+    50% { margin-left: 30%; }
+    75% { margin-left: 10%; }
+    100% { margin-left: 0%; }
+`;
+
 const ButtonContainer = styled.div`
     cursor: pointer;
     justify-content: space-between;
@@ -416,6 +423,7 @@ const ButtonContainer = styled.div`
     text-transform: uppercase;
     font-weight: 900;
     color: #5085A5;
+    animation: ${slideIn} 1s linear;
 
     & .overlayText {
       position: relative;

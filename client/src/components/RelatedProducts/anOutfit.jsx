@@ -7,7 +7,7 @@
 
 import React from 'react';
 import $ from 'jquery';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import Stars from '../Reviews/Styles.jsx';
 
 class AnOutfit extends React.Component {
@@ -133,6 +133,14 @@ const Img = styled.img`
     width: 18vw;
     object-fit: cover;
   `;
+const slideIn = keyframes`
+      from {
+        margin-left: 100%;
+      }
+      to {
+        margin-left: 0%;
+      }
+  `;
 
 const Container = styled.div`
     cursor: pointer;
@@ -141,6 +149,7 @@ const Container = styled.div`
     flex-direction: column;
     width: 30vw;
     padding: 1.5vw;
+    animation: ${slideIn} 1.5s ease-in-out;
   `;
 
 const InnerContainer = styled.div`

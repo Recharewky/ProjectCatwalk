@@ -9,7 +9,7 @@ import OutfitList from './OutfitList.jsx';
 function RelatedProducts(props) {
   const [allRelatedProducts, setDisplay] = useState([]);
   const [currentProduct, setCurrent] = useState({});
-  const { id } = props;
+  const { id, changeProduct } = props;
 
   useEffect(() => {
     $.ajax({
@@ -46,6 +46,8 @@ function RelatedProducts(props) {
         <RelatedProductList
           allRelatedProducts={allRelatedProducts}
           currentProduct={currentProduct}
+          changeProduct={changeProduct}
+          currentProductID={id}
         />
       </div>
       <div>

@@ -25,6 +25,7 @@ const NamePrice = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 10px;
+  margin-top: 10px;
 `;
 
 const Category = styled.div`

@@ -69,14 +69,14 @@ const CartStyle = styled.button`
 const SizeText = styled.div`
   grid-row: 1;
   grid-column: 1;
-  font-size: 14px;
+  font-size: 16px;
   color: #5085A5;
   `;
 
 const AmtText = styled.div`
   grid-row: 1;
   grid-column: 2;
-  font-size: 14px;
+  font-size: 16px;
   color: #5085A5;
 `;
 

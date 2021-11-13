@@ -23,6 +23,7 @@ const FeatureStyle = styled.ul`
   border-left: solid;
   border-color: #687864;
   line-height: 1.25;
+  font-size: 16px;
 `;
 
 const StyledTitle = styled.h3`
@@ -35,6 +36,7 @@ const StyledDescriptionText = styled.div`
   font-style: oblique;
   text-align: justify;
   line-height: 1.5;
+  font-size: 16px;
 `;
 
 const Check = styled.i`

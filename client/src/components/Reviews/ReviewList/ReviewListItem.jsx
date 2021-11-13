@@ -9,8 +9,13 @@ import moment from 'moment';
 const ReviewListItem_Container = styled.div `
 display:flex;
 flex-direction: column;
-gap: 12px;
+gap: 15px;
+margin-top: 10px;
+border-radius: 10px;
+transition: 0.1s ease;
+border-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
 `;
+
 const Start_Info_Container = styled.div`
 padding-top: 30px;
 display: flex;
@@ -36,6 +41,7 @@ font-size: 16px;
 const Photo_div = styled.div`
 display: flex;
 flex-direction: row;
+
 `;
 
 const Recommend_div = styled.div`
@@ -43,10 +49,22 @@ font-size: 16px;
 `;
 
 const Response_Container = styled.div`
+font-style: oblique;
 display: flex;
-background-color: #d3d3d3;
+background-color: #5085a5;
+color: #f7f9fb;
 height:80px;
 align-items: center
+border-radius: 10px;
+transition: 0.1s ease;
+border-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
+`;
+
+const Helpful_div = styled.div`
+gap: 12px;
+display: flex;
+flex-direction: row;
+font-size: 16px;
 `;
 
 const ResponseText_Container = styled.div`
@@ -57,12 +75,6 @@ flex-direction: column;
 gap: 12px;
 `;
 
-const Helpful_div = styled.div`
-gap: 12px;
-display: flex;
-flex-direction: row;
-font-size: 16px;
-`;
 
 const ReviewListItem = (props) => {
   const [id, setId] = useState(0);
@@ -106,7 +118,7 @@ const ReviewListItem = (props) => {
 
   const handleVoteYes = () => {
     if (!voted) {
-       setHelpful(true);
+       setHelpful(false);
       };
 
     handleHelpfulPut(props.review.review_id);
@@ -129,6 +141,7 @@ const ReviewListItem = (props) => {
     if (recommend) {
       var recommend = <Recommend_div> <span style={{color: 'blue'}}>&#10003;</span>   I recommended this product</Recommend_div>;
     }
+    // console.log('starRating is a --->', `${starRating * 20}%`);
     return (
       <ReviewListItem_Container>
         <Start_Info_Container>
@@ -159,7 +172,7 @@ const ReviewListItem = (props) => {
         <Response_Container>
           <ResponseText_Container>
             <div>
-              <span style={{color: 'black', fontWeight: 'bold'}}>Response:</span>
+              <span style={{color: '#f7f9fb', fontWeight: 'bold'}}>Response:</span>
             </div>
             <div>
               {response} This is a reponse place holder

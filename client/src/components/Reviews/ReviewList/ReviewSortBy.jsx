@@ -1,14 +1,26 @@
 import React from 'react';
+import styled from 'styled-components';
 
-const ReviewSortBy = () => {
+const Container = styled.div`
+font-size: 24px
+font
+`;
+
+class ReviewSortBy extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      totalReview: 250
+    };
+  }
+
+  render() {
     return (
-      <div>
-        <h1>Sort By...</h1>
-        <b>{this.props.totalReviews} reviews, sorted by ...</b>
-      </div>
-
+      <Container>
+        <b>{this.state.totalReview} reviews, sorted by relevance</b>
+      </Container>
     );
+  }
 }
-
 
 export default ReviewSortBy;

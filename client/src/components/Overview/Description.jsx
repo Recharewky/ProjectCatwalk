@@ -3,9 +3,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const DescContainer = styled.div`
-  border: solid black;
   display: grid;
-  grid-template-columns: 425px 200px;
+  grid-template-columns: 425px 250px;
   column-gap: 30px;
 `;
 
@@ -19,6 +18,7 @@ const FeatureStyle = styled.ul`
   margin: 0;
   grid-column: 2;
   border-left: solid;
+  line-height: 1.5;
 `;
 
 const StyledTitle = styled.h3`

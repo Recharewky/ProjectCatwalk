@@ -20,8 +20,8 @@ class App extends React.Component {
     return (
       <Container>
         <Overview id={id} />
-        <RelatedProduct id={id} />
-        <Reviews id={id} />
+        {/* <RelatedProduct id={id} />
+        <Reviews id={id} /> */}
         {/* <QA /> */}
       </Container>
 
@@ -34,6 +34,7 @@ const Container = styled.div`
   font-style: normal;
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
+  background-color: #F7F9FB;
 `;
 
 export default App;

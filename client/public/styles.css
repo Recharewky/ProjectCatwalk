@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+}
+
+/* Constrains the width and centers the page's content. */
+
+#wrapper {
+  margin: 0 auto;
+  width: 100%;
+}
+
+header {
+  height: 150px;
+  width: 100%;
+  overflow: hidden;
+  background: white url('https://www.sas.com/en_us/insights/analytics/machine-learning/_jcr_content/par/styledcontainer_31e3/image.img.jpg/1630694864879.jpg') no-repeat center center;
+  background-attachment: fixed;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  /* The two lines below make the photo opaque. No Apacity = 1  Full Opacity = 0  :-) */
+  opacity: 0.8;
+  line-height: 2.8em;
+}
+
+h1 {
+  margin-top: 1.5em;
+  padding-left: 1em;
+  font-family: 'Open Sans', sans-serif;
+  text-transform: uppercase;
+  font-size: 50px;
+  color: #F7F9FB;
+  width: 100%;
+}
+
+
+/*  filter: alpha(opacity=60); */

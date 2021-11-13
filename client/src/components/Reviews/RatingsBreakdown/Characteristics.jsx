@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 const Chars_div = styled.div`
 padding-top: 25px;
+padding-left: 25px
 `;
 
 const FactorBar_Containter = styled.div`

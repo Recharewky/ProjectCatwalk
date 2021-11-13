@@ -8,6 +8,7 @@ const HeadingContainer = styled.div`
 `;
 
 const Container = styled.div`
+  margin-left: 7.8vw;
   display: flex;
   border: #1c9bef 0px;
   border-style: solid;
@@ -29,6 +30,7 @@ const ReviewsContainer = styled.div`
 
 `;
 const RatingsBreakdownContainer = styled.div`
+
   display: flex;
   flex-direction: column;
   flex-wrap: column;

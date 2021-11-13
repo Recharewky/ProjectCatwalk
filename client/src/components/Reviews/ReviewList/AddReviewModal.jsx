@@ -14,7 +14,7 @@ const Button = styled.button`
     color: #8fc1e3;
   }
   object-fit: contain;
-  margin: 0 1em;
+  margin: 0 2em;
   padding: 0.25em 1em;
   border-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
 `;
@@ -24,7 +24,7 @@ function AddReviewModal () {
 
   const [modalIsOpen, setmodalIsOpen] = useState(false);
   return(
-    <div>
+    <div >
       <Button onClick={() => setmodalIsOpen(true)}> Add A Review +</Button>
       <Modal
         isOpen={modalIsOpen}
@@ -32,15 +32,15 @@ function AddReviewModal () {
         onRequestClose={() => setModalIsOpen(true)}
         style={{
           overlay: {
-            backgroundColor: 'grey'
+            backgroundColor: '#31708e'
           },
           content: {
-            color: 'orange'
+            color: '#31708e'
           }}
         }>
       <AddReview />
 
-        <Button onClick={() => setmodalIsOpen(false)}> Close </Button>
+        <Button className="display: flex;"onClick={() => setmodalIsOpen(false)}> Close </Button>
 
       </Modal>
     </div>

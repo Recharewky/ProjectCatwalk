@@ -7,7 +7,7 @@ import axios from 'axios';
 
 const Button_Group = styled.div`
   display: flex;
-  padding: 0.25em 1em;
+  padding: 1em 3em;
 `
 
 const Button = styled.button`
@@ -22,7 +22,7 @@ const Button = styled.button`
   }
   object-fit: contain;
   margin: 0 1em;
-  padding: 0.25em 1em;
+
   border-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
 `;
 
@@ -87,7 +87,9 @@ class ReviewList extends React.Component {
 
   render() {
     return (
+
       <ReviewListItems_Container >
+        <ReviewSortBy/>
         {this.state.display.map((review, index) =>
         <ReviewListItem review={review} key={index} />
         )}

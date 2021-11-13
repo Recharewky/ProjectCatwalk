@@ -16,7 +16,6 @@ const Main = styled.img`
   width: 600px;
   object-fit: contain;
   border-radius: 5px;
-  border: 3px solid #31708E;
   background-color: black;
   cursor: zoom-in;
   grid-column: 2;
@@ -30,7 +29,7 @@ const Thumbnail = styled.img`
   width: 3em;
   object-fit: cover;
   border-radius: 5px;
-  border: 3px solid;
+  border: 3px outset;
   background-color: black;
   border-color: ${(props) => props.selectedColor};
   cursor: pointer;
@@ -47,12 +46,17 @@ const LeftArrow = styled.button`
   height: 3em;
   width: 3em;
   border: none;
+  padding-right: 10px;
   background-color: transparent;
   color: #687864;
   cursor: pointer;
   z-index: 3;
   grid-column: 1;
   grid-row: 3;
+
+  & :hover {
+    transform: scale(1.5);
+  }
 `;
 
 const RightArrow = styled.button`
@@ -65,6 +69,10 @@ const RightArrow = styled.button`
   z-index: 3;
   grid-column: 3;
   grid-row: 3;
+
+  & :hover {
+    transform: scale(1.5);
+  }
 `;
 
 const Gallery = styled.div`
@@ -82,7 +90,7 @@ const MainContainer = styled.div`
   grid-template-columns: 35px 600px 35px;
   grid-template-rows: 50px 210px 35px 210px 60px;
   grid-column: 1;
-  grid-row: 1 / span 4;
+  grid-row: 1 / span 5;
   grid-column-gap: 8px;
   width: 686px;
 `;
@@ -94,8 +102,8 @@ const MainImage = ({ photos }) => {
   const [showExpanded, enableExpanded] = useState(false);
 
   let i = 0;
-  const Thumbnails = [];
   const max = photos.length >= 7 ? 7 : photos.length;
+  const Thumbnails = [];
 
   const setActivePhoto = (e) => {
     const id = Number(e.target.dataset.id);
@@ -118,7 +126,7 @@ const MainImage = ({ photos }) => {
         key={i}
         src={photos[i].thumbnail_url}
         data-id={i}
-        selectedColor={i === currentPhoto ? '#8FC1E3' : ''}
+        selectedColor={i === currentPhoto ? '#8FC1E3' : 'black'}
         onClick={setActivePhoto}
       />
     ));

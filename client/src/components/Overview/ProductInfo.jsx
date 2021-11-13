@@ -4,14 +4,38 @@ import React from 'react';
 import styled from 'styled-components';
 import Star from '../Reviews/Styles.jsx';
 
+//  display: grid;
+// grid-template-rows: 30px 50px 80px 25px 50px;
+// grid-template-columns: 150px 250px;
+
+// Colors to use
+// Green:      #687864
+// Dark blue   #31708E
+// Medium blue #5085A5
+// Light blue  #8FC1E3
+// Off white   #F7F9FB
+
 const Info = styled.div`
   grid-column: 2;
   grid-row: 2;
   display: grid;
-  grid-template-rows: 30px 50px 80px 25px 50px;
-  grid-template-columns: 150px 250px;
+  grid-template-rows: 100px 120px;
   row-gap: 10px;
   margin-left: 15px;
+`;
+
+const StarCat = styled.div`
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+`;
+
+const NamePrice = styled.div`
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
 `;
 
 const Category = styled.div`
@@ -21,17 +45,18 @@ const Category = styled.div`
   grid-column: 1;
   align-self: start;
   justify-self: left;
-  padding-left: 15px;
-  padding-right: 15px;
-  margin-left: 10px;
-  background-color: darkgray;
-  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #31708E;
+  color: #F7F9FB;
   border-radius: 25px;
   cursor: pointer;
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
 
   &:hover {
-    color: black;
-    background-color: cornflowerblue;
+    transform: scale(1.05);
+    color: #31708E;
+    background-color: #F7F9FB;
   }
 `;
 
@@ -40,23 +65,21 @@ const ProductName = styled.div`
   font-weight: bolder;
   grid-row: 3;
   grid-column: 1 / span2;
-  padding-left: 10px;
 `;
 
 const Slogan = styled.div`
   font-size: 12px;
   font-style: oblique;
-  font-color: lightgray;
+  color: #5085A5;
   grid-row: 4;
   grid-column: 1 / span2;
-  padding-left: 10px;
 `;
 
 const Price = styled.div`
   font-size: 22px;
+  color: #31708E;
   grid-row: 5;
   grid-column: 1 / span2;
-  padding-left: 10px;
 `;
 
 const SaleDisplay = styled.div`
@@ -75,9 +98,8 @@ const PercentageContainer = styled.div`
 
 const StarContainer = styled.div`
   grid-row: 1;
-  grid-column: 1 / span2;
-  align-self: end;
-  margin-left: 15px;
+  grid-column: 1;
+  align-self: start;
 `;
 
 const ProductInfo = ({ info, originalPrice, salePrice }) => {
@@ -86,26 +108,30 @@ const ProductInfo = ({ info, originalPrice, salePrice }) => {
 
   return (
     <Info>
-      <StarContainer>
-        <Star />
-      </StarContainer>
-      <Category>
-        {info.category}
-      </Category>
-      <ProductName>
-        {info.name}
-      </ProductName>
-      <Slogan>
-        {info.slogan}
-      </Slogan>
-      <Price onSale={salePrice !== null}>
-        {salePrice && (
-          <PercentageContainer>{`On Sale! ~${percentage}% off!`}</PercentageContainer>
-        )}
-        $
-        {salePrice ? ` ${salePrice}     ` : ` ${originalPrice}`}
-        {salePrice ? sale : null}
-      </Price>
+      <StarCat>
+        <StarContainer>
+          <Star />
+        </StarContainer>
+        <Category>
+          {info.category}
+        </Category>
+      </StarCat>
+      <NamePrice>
+        <ProductName>
+          {info.name}
+        </ProductName>
+        <Slogan>
+          {info.slogan}
+        </Slogan>
+        <Price onSale={salePrice !== null}>
+          {salePrice && (
+            <PercentageContainer>{`On Sale! ~${percentage}% off!`}</PercentageContainer>
+          )}
+          $
+          {salePrice ? ` ${salePrice}     ` : ` ${originalPrice}`}
+          {salePrice ? sale : null}
+        </Price>
+      </NamePrice>
     </Info>
   );
 };

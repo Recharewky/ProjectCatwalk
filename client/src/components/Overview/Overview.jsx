@@ -12,10 +12,9 @@ import Selection from './Selection.jsx';
 const ProductInfoContainer = styled.div`
   display: grid;
   grid-template-columns: 670px 400px;
-  grid-template-rows: 30px 280px 140px 80px;
+  grid-template-rows: 30px 220px 140px 80px 20px;
   width: 100%;
   gap: 20px;
-  column-gap: 30px;
 `;
 
 const DescriptionContainer = styled.div`

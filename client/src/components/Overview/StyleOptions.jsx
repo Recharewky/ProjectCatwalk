@@ -14,19 +14,20 @@ import Style from './Style.jsx';
 const StylesContainer = styled.div`
   grid-column: 2;
   grid-row: 3;
+  align-self: center;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   width: 66%;
   margin-left: 15px;
-  padding-left: 10px;
 `;
 
 const StyleNameContainer = styled.legend`
   font-style: italic;
   font-weight: bolder;
   font-size: large;
-  color: #31708E
+  color: #31708E;
+  margin-bottom: 3px;
 `;
 
 const StyleOptions = ({ styles, currentStyle, onStyleChange }) => {

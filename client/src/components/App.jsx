@@ -41,7 +41,9 @@ class App extends React.Component {
 const Container = styled.div`
   font-family: 'Roboto', sans-serif;
   font-style: normal;
-
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  background-color: #F7F9FB;
 `;
 
 export default App;

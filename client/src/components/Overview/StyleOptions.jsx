@@ -4,22 +4,31 @@ import React from 'react';
 import styled from 'styled-components';
 import Style from './Style.jsx';
 
+// Colors to use
+// Green:      #687864
+// Dark blue   #31708E
+// Medium blue #5085A5
+// Light blue  #8FC1E3
+// Off white   #F7F9FB
+
 const StylesContainer = styled.div`
   grid-column: 2;
   grid-row: 3;
-  border: solid black;
+  align-self: center;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   width: 66%;
   margin-left: 15px;
-  padding-left: 10px;
 `;
 
 const StyleNameContainer = styled.legend`
   font-style: italic;
   font-weight: bolder;
   font-size: large;
+  color: #31708E;
+  margin-bottom: 3px;
+  text-transform: uppercase;
 `;
 
 const StyleOptions = ({ styles, currentStyle, onStyleChange }) => {
@@ -33,9 +42,9 @@ const StyleOptions = ({ styles, currentStyle, onStyleChange }) => {
           {'  >  '}
           {currentStyle.name}
         </StyleNameContainer>
-        {/* Find a way to reflect the current style selected */}
         {options.map((style) => (
           <Style
+            key={style.name}
             style={style}
             onStyleChange={onStyleChange}
             currentStyle={currentStyle}

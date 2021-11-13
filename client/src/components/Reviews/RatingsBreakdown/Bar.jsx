@@ -5,7 +5,7 @@ const Bar_container = styled.div `
 display: flex;
 flex-direction: row;
 width: 250px;
-background-color: #f1f1f1;
+background-color: #8fc1e3;
 text-align: center;
 color: black;
 height: 13px;
@@ -52,7 +52,7 @@ class Bar extends React.Component {
     const Bar_div = styled.div `
     width: ${this.state.breakdown[2]}%;
     height: 14px;
-    background-color: #04AA6D
+    background-color: #31708e
     `;
 
     return (

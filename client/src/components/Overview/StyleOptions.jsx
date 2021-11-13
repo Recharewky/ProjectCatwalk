@@ -28,6 +28,7 @@ const StyleNameContainer = styled.legend`
   font-size: large;
   color: #31708E;
   margin-bottom: 3px;
+  text-transform: uppercase;
 `;
 
 const StyleOptions = ({ styles, currentStyle, onStyleChange }) => {

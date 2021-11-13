@@ -31,6 +31,7 @@ const NamePrice = styled.div`
 const Category = styled.div`
   font-weight: bolder;
   font-size: 22px;
+  text-transform: uppercase;
   grid-row: 2;
   grid-column: 1;
   align-self: start;
@@ -53,6 +54,7 @@ const Category = styled.div`
 const ProductName = styled.div`
   font-size: 44px;
   font-weight: bolder;
+  text-transform: uppercase;
   color: #31708E;
   grid-row: 3;
   grid-column: 1 / span2;

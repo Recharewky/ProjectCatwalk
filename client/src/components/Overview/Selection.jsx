@@ -69,6 +69,7 @@ const CartStyle = styled.button`
 const SizeText = styled.div`
   grid-row: 1;
   grid-column: 1;
+  text-transform: uppercase;
   font-size: 16px;
   color: #5085A5;
   `;
@@ -76,6 +77,7 @@ const SizeText = styled.div`
 const AmtText = styled.div`
   grid-row: 1;
   grid-column: 2;
+  text-transform: uppercase;
   font-size: 16px;
   color: #5085A5;
 `;

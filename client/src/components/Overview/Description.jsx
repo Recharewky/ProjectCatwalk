@@ -4,11 +4,12 @@ import styled from 'styled-components';
 
 const DescContainer = styled.div`
   display: grid;
-  grid-template-columns: 425px 350px;
-  column-gap: 40px;
+  grid-template-columns: 425px 400px;
+  column-gap: 110px;
   margin-top: 25px;
-  margin-left: 75px;
+  margin-left: 60px;
   color: #31708E;
+  text-transform: uppercase;
 `;
 
 const DescStyle = styled.div`

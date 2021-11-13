@@ -24,7 +24,7 @@ header {
   line-height: 2.8em;
 }
 
-h1 {
+ .title{
   margin-top: 1.5em;
   padding-left: 1em;
   font-family: 'Open Sans', sans-serif;

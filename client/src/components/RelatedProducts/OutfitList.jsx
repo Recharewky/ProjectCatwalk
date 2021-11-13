@@ -15,7 +15,7 @@ const OutfitList = ({ currentProduct }) => {
     : []);
   const [addedAlready, setAdded] = useState(false);
   const [productCard, setCard] = useState([]);
-  const showIcons = allOutfitProducts.length > 4;
+  const showIcons = allOutfitProducts.length > 3;
 
   useEffect(() => {
     console.log('test');
@@ -432,7 +432,7 @@ const ButtonContainer = styled.div`
         display: block;
         opacity: 1;
         text-transform: uppercase;
-        left: 50%;
+        left: 9vw;
         transform: translate(-50%,-50%);
         top: -300px;
         width: 200px;
@@ -441,7 +441,7 @@ const ButtonContainer = styled.div`
       }
       & button {
         width: 150px;
-        left: 50%;
+        left: 9vw;
         padding: 5px;
         color: #F7F9FB;
         background-color: #31708E;

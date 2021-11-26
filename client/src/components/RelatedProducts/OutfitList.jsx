@@ -31,6 +31,8 @@ const OutfitList = ({ currentProduct }) => {
         let counter = 0;
         if (success.ratings.length !== 0) {
           // eslint-disable-next-line guard-for-in
+          // test comments;
+          // test comment #2;
           for (const key in success.ratings) {
             total += (Number(key) * Number(success.ratings[key]));
             counter += Number(success.ratings[key]);

@@ -84,17 +84,15 @@ const Modal = (props) => {
             <ModalWrapper showModal={showModal}>
               <ModalContent>
                 <h1>{currentProductName}</h1>
-                {compareFunc().map((anItem) =>
-                  // eslint-disable-next-line no-unused-expressions
-                  (anItem[0]
-                    ? (
-                      <div>
-                        {' '}
-                        <i className="fas fa-check" />
-                        {' '}
-                      </div>
-                    )
-                    : <div> No </div>))}
+                {compareFunc().map((anItem) => (anItem[0]
+                  ? (
+                    <div>
+                      {' '}
+                      <i className="fas fa-check" />
+                      {' '}
+                    </div>
+                  )
+                  : <div> No </div>))}
                 <button onClick={(event) => changeProduct(event, currentProductID)}>Read More</button>
               </ModalContent>
               <ModalContent>
